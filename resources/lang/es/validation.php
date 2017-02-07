@@ -160,6 +160,12 @@ return [
         'company_name'         => 'nombre',
         'company_description'  => 'descripción',
 
+        'location_id'          => 'lugar',
+        'reportsheet_classification' => 'clasificación',
+        'reportsheet_description' => 'descripción del reporte',
+        'reportsheet_correctiveaction' => 'acción Correctiva',
+        'reportsheet_image' => 'foto',
+
     ],
 
 ];
