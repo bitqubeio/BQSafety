@@ -21,21 +21,26 @@ class LocationController extends Controller
             'created_at'
         ])->get();
 
-        // return
+        // return locations
         return Datatables::of($locations)
-            ->addColumn('delete', function ($location) {
-                return '<input type="checkbox" name="row-' . $location->id . '">';
-            })
             ->addColumn('action', function ($location) {
+                // permission - edit
+                $edit = $delete = null;
+                if (auth()->user()->can('location-edit')) {
+                    $edit = '<a href="location/' . $location->id . '/edit" title="Editar"><i class="fa fa-pencil"></i></a>';
+                }
+                // permission - delete
+                if (auth()->user()->can('location-delete')) {
+                    $delete = '<button type="button" value="' . $location->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion"><i class="fa fa-close" aria-hidden="true" title="Eliminar"></i></button>';
+                }
+                // status
                 if ($location->location_status) {
                     $estado = '<i class="fa fa-toggle-on" title="Activo"></i>';
                 } else {
                     $estado = '<i class="fa fa-toggle-off" title="Inactivo"></i>';
                 }
-                return '<a href="location/' . $location->id . '" title="Ver"><i class="fa fa-eye"></i></a>
-                        <a href="location/' . $location->id . '/edit" title="Editar"><i class="fa fa-pencil"></i></a>
-                        ' . $estado . '
-                        <button type="button" value="' . $location->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion"><i class="fa fa-close" aria-hidden="true" title="Eliminar"></i></button>';
+                // return action
+                return '<a href="location/' . $location->id . '" title="Ver"><i class="fa fa-eye"></i></a>' . $edit . $estado . $delete;
             })
             ->editColumn('created_at', function ($location) {
                 return '<span class="badge badge-success badge-md"><i class="fa fa-clock-o"></i> ' . $location->created_at->toFormattedDateString() . '</span>';
@@ -43,7 +48,7 @@ class LocationController extends Controller
             ->editColumn('location_name', function ($location) {
                 return '<p>' . $location->location_name . '</p><p class="small">Creado ' . $location->created_at->diffForHumans() . '</p>';
             })
-            ->rawColumns(['delete', 'action', 'created_at', 'location_name'])
+            ->rawColumns(['action', 'created_at', 'location_name'])
             ->make(true);
     }
 

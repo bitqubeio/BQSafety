@@ -29,7 +29,7 @@
     {{ Html::style('https://fonts.googleapis.com/css?family=Work+Sans:400,600') }}
     <style>
         * {
-            font-family: 'Work Sans', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
         }
 
         button {
@@ -74,26 +74,33 @@
             margin: 0 auto;
         }
 
+        .btn{
+            border: 1px solid transparent;
+            border-radius: 2px;
+        }
+
         .btn-register {
-            background-color: #1E2D3B;
-            border-color: #1E2D3B;
+            background-color: #1289AB;
+            border-color: #1289AB;
             color: #fff;
         }
 
         .btn-register:hover {
-            background-color: #152330;
-            border-color: #152330;
+            background-color: #157693;
+            border-color: #D8EAFA;
+            color: #fff;
         }
 
         .btn-login {
-            background-color: #fc9b28;
-            border-color: #fc9b28;
+            background-color: #08A563;
+            border-color: #08A563;
             color: #fff;
         }
 
         .btn-login:hover {
-            background-color: #ed8b17;
-            border-color: #ed8b17;
+            background-color: #067446;
+            border-color: #D8EAFA;
+            color: #fff;
         }
 
         #polina {
@@ -118,8 +125,16 @@
 <div id="polina">
     <img class="logo" src="{{ url('bqsafety/img/user.png') }}" alt="">
     <h1>BQSafety</h1>
-    <a href="{{ url('/login') }}" class="btn btn-login mt-5">Acceder</a>
-    <a href="{{ url('/register') }}" class="btn btn-register mt-5">Registrarse</a>
+
+    @if (Route::has('login'))
+        @if (Auth::check())
+            <a href="{{ url('/home') }}" class="btn btn-login mt-5">Bienvenido, {{ Auth::user()->user_username }}</a>
+        @else
+        <a href="{{ url('/login') }}" class="btn btn-login mt-5">Acceder</a>
+        <a href="{{ url('/register') }}" class="btn btn-register mt-5">Registrarse</a>
+        @endif
+    @endif
+
 </div>
 </body>
 

@@ -11,12 +11,11 @@
                     <div class="row">
                         <h1 class="col-lg-6"><i class="fa fa-map-marker"></i>Ubicaciones</h1>
                         <div class="col-lg-6 text-right">
-                            <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"
-                                                                         aria-hidden="true"></i> PDF</a>
-                            <a href="#" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"
-                                                                          aria-hidden="true"></i> Excel</a>
-                            <a href="{{ url('/location/create') }}" class="btn btn-secondary btn-sm"><i
-                                        class="fa fa-plus" aria-hidden="true"></i> Agregar Ubicación</a>
+                            @permission('location-create')
+                            <a href="{{ url('/location/create') }}" class="btn btn-secondary btn-sm">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar Ubicación
+                            </a>
+                            @endpermission
                         </div>
                     </div>
                 </div>
@@ -27,7 +26,6 @@
                            data-url="{{ url('location') }}">
                         <thead>
                         <tr>
-                            <th><input type="checkbox"></th>
                             <th>#</th>
                             <th>Creado</th>
                             <th>Nombre</th>
@@ -41,7 +39,9 @@
         </div>
     </section>
 
+    @permission('location-delete')
     @include('partials.modalQuestion')
+    @endpermission
 
 @endsection
 
@@ -49,8 +49,12 @@
 
     <!-- DataTables -->
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
-    {{ Html::script('bqsafety/js/location.js') }}
-    {{ Html::script('bqsafety/js/toastr.js') }}
+    <!-- Locations -->
+    @permission('location-delete'){{ Html::script('bqsafety/js/location.js') }}@endpermission
+
+    <!-- Toastr -->
+    @permission(['location-create','location-edit','location-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
+
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
@@ -64,7 +68,6 @@
                 "serverSide": true,
                 "ajax": "{{ url('api/locations') }}",
                 "columns": [
-                    {data: 'delete', name: 'delete', sClass: 'text-center', orderable: false, searchable: false},
                     {data: 'id', name: 'id', sClass: 'text-center font-weight-bold'},
                     {data: 'created_at', name: 'created_at', sClass: 'text-center'},
                     {data: 'location_name', name: 'location_name'},

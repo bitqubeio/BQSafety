@@ -11,8 +11,9 @@
                     <div class="row">
                         <h1 class="col-lg-6"><i class="fa fa-folder-open-o"></i>Mis Reportes</h1>
                         <div class="col-lg-6 text-right">
-                            <a href="{{ url('/reportsheet/create') }}" class="btn btn-create btn-sm"><i
-                                        class="fa fa-plus" aria-hidden="true"></i> Nuevo Reporte</a>
+                            @permission('my-reportsheet-create')
+                            <a href="{{ url('/reportsheet/create') }}" class="btn btn-create btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Reporte</a>
+                            @endpermission
                         </div>
                     </div>
                 </div>
@@ -48,7 +49,7 @@
 
     <!-- DataTables -->
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
-    {{ Html::script('bqsafety/js/toastr.js') }}
+    @permission(['my-reportsheet-create','my-reportsheet-edit','my-reportsheet-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()

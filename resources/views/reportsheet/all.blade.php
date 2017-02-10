@@ -11,10 +11,7 @@
                     <div class="row">
                         <h1 class="col-lg-6"><i class="fa fa-folder-open-o"></i>Reportes</h1>
                         <div class="col-lg-6 text-right">
-                            <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-file-pdf-o"
-                                                                         aria-hidden="true"></i> Exportar a PDF</a>
-                            <a href="#" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o"
-                                                                          aria-hidden="true"></i> Exportar a Excel</a>
+                            <!-- buttons -->
                         </div>
                     </div>
                 </div>
@@ -42,7 +39,9 @@
         </div>
     </section>
 
+    @permission('reportsheet-delete')
     @include('partials.modalQuestion')
+    @endpermission
 
 @endsection
 
@@ -50,7 +49,9 @@
 
     <!-- DataTables -->
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
-    {{ Html::script('bqsafety/js/toastr.js') }}
+
+    @permission(['reportsheet-create','reportsheet-edit','reportsheet-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
+
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()

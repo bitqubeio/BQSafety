@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Empresas')
+@section('title', 'Roles')
 
 @section('content')
 
@@ -9,11 +9,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                        <h1 class="col-lg-6"><i class="fa fa-building-o"></i>Empresas</h1>
+                        <h1 class="col-lg-6"><i class="fa fa-vcard-o"></i>Roles</h1>
                         <div class="col-lg-6 text-right">
-                            @permission('company-create')
-                            <a href="{{ url('/company/create') }}" class="btn btn-secondary btn-sm">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar Empresa
+                            @permission('role-create')
+                            <a href="{{ route('roles.create') }}" class="btn btn-secondary btn-sm">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Rol
                             </a>
                             @endpermission
                         </div>
@@ -22,14 +22,16 @@
             </div>
             <div class="row my-4">
                 <div class="col-lg-12">
-                    <table class="table responsive table-bqsafety table-hover" id="grid-companies"
-                           data-url="{{ url('company') }}">
+                    <table class="table responsive table-bqsafety table-hover" id="grid-roles"
+                           data-url="{{ url('roles') }}">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Creado</th>
                             <th>Nombre</th>
-                            <th style="width: 50%">Descripción</th>
+                            <th>Nombre para mostrar</th>
+                            <th>Descripción</th>
+                            <th>Actualizado</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
@@ -39,7 +41,7 @@
         </div>
     </section>
 
-    @permission('company-delete')
+    @permission('role-delete')
     @include('partials.modalQuestion')
     @endpermission
 
@@ -49,28 +51,29 @@
 
     <!-- DataTables -->
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
-
-    @permission('company-delete'){{ Html::script('bqsafety/js/company.js') }}@endpermission
-
-    @permission(['company-create','company-edit','company-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
-
+    @permission('role-delete')
+    {{ Html::script('bqsafety/js/roles.js') }}
+    @endpermission
+    {{ Html::script('bqsafety/js/toastr.js') }}
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         });
 
         $(document).ready(function () {
-            $('#grid-companies').DataTable({
+            $('#grid-roles').DataTable({
                 "bAutoWidth": false,
                 "order": [[0, "desc"]],
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ url('api/companies') }}",
+                "ajax": "{{ url('api/roles') }}",
                 "columns": [
                     {data: 'id', name: 'id', sClass: 'text-center font-weight-bold'},
                     {data: 'created_at', name: 'created_at', sClass: 'text-center'},
-                    {data: 'company_name', name: 'company_name'},
-                    {data: 'company_description', name: 'company_description'},
+                    {data: 'name', name: 'name'},
+                    {data: 'display_name', name: 'display_name'},
+                    {data: 'description', name: 'description'},
+                    {data: 'updated_at', name: 'updated_at', sClass: 'text-center'},
                     {data: 'action', name: 'action', sClass: 'actions text-center', orderable: false, searchable: false}
                 ],
                 "language": {

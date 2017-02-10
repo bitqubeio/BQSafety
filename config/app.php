@@ -175,6 +175,7 @@ return [
         narutimateum\Toastr\ToastrServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -242,6 +243,7 @@ return [
         'Toastr' => narutimateum\Toastr\Facades\Toastr::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         
     ],
 

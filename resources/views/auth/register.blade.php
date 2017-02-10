@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="boot text-center small mt-2">
-                    <p><a href="/">« Regresa a BQSafety.io</a></p>
+                    <p><a href="{{ url('/') }}">← Volver a BQSafety</a></p>
                 </div>
             </div>
         </div>

@@ -26,6 +26,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Roles</th>
                             <th>Registrado</th>
                             <th>Usuario</th>
                             <th>Apellidos y Nombres</th>
@@ -34,6 +35,7 @@
                             <th>Cargo/Area</th>
                             <th>Correo</th>
                             <th>Estado</th>
+                            <th>Acciones</th>
                         </tr>
                         </thead>
                     </table>
@@ -65,6 +67,7 @@
                 "ajax": "{{ url('api/users') }}",
                 "columns": [
                     {data: 'id', name: 'id', sClass: 'text-center font-weight-bold'},
+                    {data: 'roles', name: 'roles', sClass: 'text-center'},
                     {data: 'created_at', name: 'created_at', sClass: 'text-center'},
                     {data: 'user_username', name: 'user_username', sClass: 'text-center'},
                     {data: 'user_names', name: 'user_names'},
@@ -73,6 +76,7 @@
                     {data: 'user_job', name: 'user_job', sClass: 'text-right'},
                     {data: 'user_email', name: 'user_email', sClass: 'text-center'},
                     {data: 'user_status', name: 'user_status'},
+                    {data: 'action', name: 'action', sClass: 'actions text-center', orderable: false, searchable: false}
                 ],
                 "language": {
                     "url": "{{ url('bqsafety/libs/datatables/json/Spanish.json') }}"

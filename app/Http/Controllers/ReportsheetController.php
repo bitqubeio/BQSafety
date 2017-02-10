@@ -34,7 +34,7 @@ class ReportsheetController extends Controller
         // return
         return Datatables::of($reportsheets)
             ->addColumn('action', function ($reportsheet) {
-                return '<a href="reportsheet/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
+                return '<a href="reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
             })
             ->editColumn('created_at', function ($reportsheet) {
                 return '<span class="badge badge-success badge-md"><i class="fa fa-clock-o"></i> ' . $reportsheet->created_at->toFormattedDateString() . '</span>';
@@ -239,7 +239,16 @@ class ReportsheetController extends Controller
         return view('reportsheet.show', ['reportsheet' => $reportsheet]);
     }
 
-    public function pdf($id)
+    public function shows($id)
+    {
+        // find
+        $reportsheet = Reportsheet::findOrFail($id);
+
+        // redirect
+        return view('reportsheet.shows', ['reportsheet' => $reportsheet]);
+    }
+
+    public function pdfShow($id)
     {
         // find
         $reportsheet = Reportsheet::findOrFail($id);
@@ -247,8 +256,25 @@ class ReportsheetController extends Controller
         //pdf
         $pdf = PDF::loadView('reportsheet.pdf', ['reportsheet' => $reportsheet]);
 
-        // download
-        return $pdf->setPaper('a5', 'portrait')->stream('rep-' . $id . '.pdf');
+        // show in windows
+        return $pdf->setPaper('a5', 'portrait')->stream('hoja_de_reporte_nro_' . $id . '.pdf');
+    }
+
+    public function pdfDownload($id)
+    {
+        // find
+        $reportsheet = Reportsheet::findOrFail($id);
+
+        //pdf
+        $pdf = PDF::loadView('reportsheet.pdf', ['reportsheet' => $reportsheet]);
+
+        // download archive
+        return $pdf->setPaper('a5', 'portrait')->download('hoja_de_reporte_nro_' . $id . '.pdf');
+    }
+
+    public function pdfDownloadWithImage($id)
+    {
+        //
     }
 
     public function edit($id)

@@ -166,6 +166,9 @@ return [
         'reportsheet_correctiveaction' => 'acción Correctiva',
         'reportsheet_image' => 'foto',
 
+        'display_name' => 'nombre para mostrar',
+        'permission' => 'permiso',
+
     ],
 
 ];

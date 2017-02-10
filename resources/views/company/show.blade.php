@@ -15,8 +15,12 @@
                     <div class="row">
                         <h1 class="col-lg-6"><i class="fa fa-eye"></i>Empresa: {{ $company->company_name }}</h1>
                         <div class="col-lg-6 text-right">
+                            @permission('company-create')
                             <a href="{{ url('/company/create') }}" class="btn btn-create btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+                            @endpermission
+                            @permission('company-edit')
                             <a href="{{ url('/company/'.$company->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                            @endpermission
                             <a href="{{ url('/company') }}" class="btn btn-secondary btn-sm"><i class="fa fa-list" aria-hidden="true"></i> Empresas</a>
                         </div>
                     </div>

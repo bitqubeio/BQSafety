@@ -23,19 +23,23 @@ class CompanyController extends Controller
 
         // return
         return Datatables::of($companies)
-            ->addColumn('delete', function ($company) {
-                return '<input type="checkbox" name="row-' . $company->id . '">';
-            })
             ->addColumn('action', function ($company) {
-                if ($company->company_status) {
-                    $estado = '<i class="fa fa-toggle-on" title="Activo"></i>';
-                } else {
-                    $estado = '<i class="fa fa-toggle-off" title="Inactivo"></i>';
+                // permission - edit
+                $edit = $delete = null;
+                if (auth()->user()->can('company-edit')) {
+                    $edit = '<a href="company/' . $company->id . '/edit" title="Editar"><i class="fa fa-pencil"></i></a>';
                 }
-                return '<a href="company/' . $company->id . '" title="Ver"><i class="fa fa-eye"></i></a>
-                        <a href="company/' . $company->id . '/edit" title="Editar"><i class="fa fa-pencil"></i></a>
-                        ' . $estado . '
-                        <button type="button" value="' . $company->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion"><i class="fa fa-close" aria-hidden="true" title="Eliminar"></i></button>';
+                // permission - delete
+                if (auth()->user()->can('company-delete')) {
+                    $delete = '<button type="button" value="' . $company->id . '" onclick="confirmDelete(this);" data-toggle="modal" data-target="#modalQuestion"><i class="fa fa-close" aria-hidden="true" title="Eliminar"></i></button>';
+                }
+                // status
+                if ($company->company_status) {
+                    $status = '<i class="fa fa-toggle-on" title="Activo"></i>';
+                } else {
+                    $status = '<i class="fa fa-toggle-off" title="Inactivo"></i>';
+                }
+                return '<a href="company/' . $company->id . '" title="Ver"><i class="fa fa-eye"></i></a>' . $edit . $status . $delete;
             })
             ->editColumn('created_at', function ($company) {
                 return '<span class="badge badge-success badge-md"><i class="fa fa-clock-o"></i> ' . $company->created_at->toFormattedDateString() . '</span>';
@@ -43,7 +47,7 @@ class CompanyController extends Controller
             ->editColumn('company_name', function ($company) {
                 return '<p>' . $company->company_name . '</p><p class="small">Creado ' . $company->created_at->diffForHumans() . '</p>';
             })
-            ->rawColumns(['delete', 'action', 'created_at', 'company_name'])
+            ->rawColumns(['action', 'created_at', 'company_name'])
             ->make(true);
     }
 

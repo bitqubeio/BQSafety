@@ -17,7 +17,7 @@
                             <h1><i class="fa fa-pencil"></i>Editar Empresa</h1>
                             <hr>
 
-                            {!! Form::model($company, ['route' => ['company.update', $company->id], 'method' => 'PUT']) !!}
+                            {!! Form::model($company, ['route' => ['company.update', $company->id], 'method' => 'PATCH']) !!}
 
                                 <div class="form-group{{ $errors->has('company_name') ? ' has-danger' : '' }}  row">
                                     <label for="company_name" class="col-lg-2 col-form-label text-lg-right">Nombre:

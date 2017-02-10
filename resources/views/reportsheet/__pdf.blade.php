@@ -1,29 +1,26 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="author" content="BQSafety - http://bitqube.io">
-    <meta name="description" content="Cal & Cemento Sur S.A.">
-    <meta name="keywords" content="Somos una empresa dedicada a crear sistemas web para la necesidad de otras empresas, así ayudarlos a optimizar su papeleo y gestión de sus productos o servicios.">
-    <title>HOJA DE REPORTE - N° {{ $reportsheet->id }}</title>
-    <style>
-        html,
-        body {
-            font-family: sans-serif;
-            font-size: 12.5px;
-        }
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Hoja de Reporte - N° {{ $reportsheet->id }}</title>
 </head>
 
+<style type="text/css">
+    body {
+        font-size: 10pt;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+</style>
+
 <body>
-<table width="100%" border="0" cellspacing="2" cellpadding="5" bgcolor="#000">
+<table width="351" border="0" cellspacing="2" cellpadding="5" bgcolor="#000">
     <tbody>
     <tr>
         <td valign="middle" align="center" bgcolor="#F2F2F2">
             <table border="0" width="100%">
                 <tr>
-                    <td align="left" width="25%"><img src="{{ url('bqsafety/img/calcesur.png') }}" width="35"></td>
+                    <td align="left" width="25%"><img src="{{ url('bqsafety/img/cementossur.png') }}" width="35"></td>
                     <td align="center" width="50%"><b>HOJA DE REPORTE</b></td>
                     <td align="right" width="25%">&nbsp;</td>
                 </tr>
@@ -36,7 +33,7 @@
             $classifications = $reportsheet->reportsheet_classification;
             $classification = explode(',', $classifications);
             ?>
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <table width="350" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td>Accidente Seguridad</td>
                     <td>
@@ -45,6 +42,7 @@
                         @else
                             <input type="checkbox">
                         @endif
+
                     </td>
                     <td width="30">&nbsp;</td>
                     <td>Accidente Ambiental</td>
@@ -98,11 +96,11 @@
         </td>
     </tr>
     <tr>
-        <td valign="middle" align="center" bgcolor="#F2F2F2" style="padding:7px 0;"><b>DATOS DE LA PERSONA QUE REPORTA</b></td>
+        <td valign="middle" align="center" bgcolor="#F2F2F2"><b>DATOS DE LA PERSONA QUE REPORTA</b></td>
     </tr>
     <tr>
-        <td bgcolor="#FFFFFF" style="padding:10px 0;">
-            <table width="100%" border="0" cellpadding="1" cellspacing="1">
+        <td bgcolor="#FFFFFF">
+            <table width="350" border="0" cellpadding="1" cellspacing="1">
                 <tr>
                     <td colspan="2"><b>Apellidos y Nombres:</b> {{ $reportsheet->user->user_lastnames }}, {{ $reportsheet->user->user_names }}</td>
                 </tr>
@@ -115,7 +113,7 @@
                     <td><b>Fecha:</b> {{ $reportsheet->created_at->toFormattedDateString() }}</td>
                 </tr>
                 <tr>
-                    <td><b>Lugar:</b> {{ $reportsheet->location->location_name }} </td>
+                    <td><b>Lugar:</b> {{ $reportsheet->location->location_name }}</td>
                     <td><b>Hora:</b> {{ $reportsheet->created_at->format('h:i A') }}</td>
                 </tr>
             </table>
@@ -123,38 +121,39 @@
         </td>
     </tr>
     <tr>
-        <td align="center" bgcolor="#F2F2F2" style="padding:7px 0;">
-                <b>DESCRIPCIÓN DE REPORTE:</b>
-                <br>
-                <span align="justify" style="font-size:70%">¿Dónde y cómo ocurrio el evento? ¿Qué estaba haciendo la persona durante el evento? ¿Qué sucedió inesperadamente?. De preferencia colocar el nombre del afectado si corresponde.</span>
+        <td bgcolor="#F2F2F2">
+            <b>DESCRIPCIÓN DE REPORTE:</b>
+            <br>
+            <span align="justify">¿Dónde y cómo ocurrio el evento? ¿Qué estaba haciendo la persona durante el evento? ¿Qué sucedió inesperadamente?. De preferencia colocar el nombre del afectado si corresponde.</span>
         </td>
     </tr>
     <tr>
-        <td bgcolor="#FFFFFF" valign="top" style="padding-bottom:15px;height: 69px;">
-            <span align="justify">{{ $reportsheet->reportsheet_description }}</span>
+        <td bgcolor="#FFFFFF" style="height: 100px" valign="top">
+            <p align="justify">{{ $reportsheet->reportsheet_description }}</p>
         </td>
     </tr>
     <tr>
-        <td align="center" bgcolor="#F2F2F2" style="padding:7px 0;">
-                <b>ACCIÓN CORRECTIVA:</b>
-                <br>
-                <span align="justify" style="font-size:70%">Colocar las acciones que se tomaron en el momento según corresponda.</span>
+        <td bgcolor="#F2F2F2">
+            <b>ACCIÓN CORRECTIVA:</b>
+            <br>
+            <span align="justify">Colocar las acciones que se tomaron en el momento según corresponda.</span>
         </td>
     </tr>
     <tr>
-        <td bgcolor="#FFFFFF" valign="top">
-            <div align="justify" style="padding:3px 0 50px 0;height: 69px;">{{ $reportsheet->reportsheet_correctiveaction }}</div>
-            <table width="100%" cellpadding="0" cellspacing="0">
+        <td bgcolor="#FFFFFF" style="height: 150px" valign="top">
+            <p align="justify">{{ $reportsheet->reportsheet_correctiveaction }}</p>
+            <br><br>
+            <table width="330" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>&nbsp;</td>
-                    <td align="left">--------------------------</td>
-                    <td align="right">------------------------------------------</td>
+                    <td align="left">----------------------------</td>
+                    <td align="right">-----------------------------------------------</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td align="left" style="font-size:70%"><i>Firma del Reportante</i></td>
-                    <td align="right" style="font-size:70%"><i>Seguridad Integral/Medio Ambiente</i></td>
+                    <td align="left"><i>Firma del Reportante</i></td>
+                    <td align="right"><i>Seguridad Integral/Medio Ambiente</i></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -165,8 +164,8 @@
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td align="left" valign="bottom" style="font-size:50%">Original: Reportante</td>
-                    <td align="right" valign="bottom" style="font-size:50%">Copia 1: Jefe de Seguridad Integral/Medio Ambiente (según corresponda)</td>
+                    <td align="left">Original: Reportante Copia 1</td>
+                    <td align="right">Jefe de Seguridad Integral/Medio Ambiente (según corresponda)</td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
@@ -174,11 +173,10 @@
     </tr>
     </tbody>
 </table>
-<table width="100%" cellpadding="1" cellspacing="1">
+<table width="351" cellpadding="0" cellspacing="0">
     <tr>
-        <td align="left" width="30%"><b>SI-F-116</b></td>
-        <td align="center" width="40%" style="font-size:50%">Hoja de Reporte N° {{ $reportsheet->id }}</td>
-        <td align="right" width="30%"><b>REVISIÓN:00</b></td>
+        <td align="left"><b>SI-F-116</b></td>
+        <td align="right"><b>REVISIÓN:00</b></td>
     </tr>
 </table>
 

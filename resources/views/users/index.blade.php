@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Empresas')
+@section('title', 'Usuarios')
 
 @section('content')
 
@@ -9,27 +9,29 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                        <h1 class="col-lg-6"><i class="fa fa-building-o"></i>Empresas</h1>
+                        <h1 class="col-lg-6"><i class="fa fa-users"></i>Usuarios</h1>
                         <div class="col-lg-6 text-right">
-                            @permission('company-create')
-                            <a href="{{ url('/company/create') }}" class="btn btn-secondary btn-sm">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Agregar Empresa
-                            </a>
-                            @endpermission
+                            <!-- buttons -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row my-4">
                 <div class="col-lg-12">
-                    <table class="table responsive table-bqsafety table-hover" id="grid-companies"
-                           data-url="{{ url('company') }}">
+                    <table class="table responsive table-bqsafety table-hover" id="grid-users"
+                           data-url="{{ url('users') }}">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Creado</th>
-                            <th>Nombre</th>
-                            <th style="width: 50%">Descripción</th>
+                            <th>Roles</th>
+                            <th>Registrado</th>
+                            <th>Usuario</th>
+                            <th>Apellidos y Nombres</th>
+                            <th>Empresa</th>
+                            <th>Código</th>
+                            <th>Cargo/Area</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
@@ -39,7 +41,7 @@
         </div>
     </section>
 
-    @permission('company-delete')
+    @permission('users-delete')
     @include('partials.modalQuestion')
     @endpermission
 
@@ -50,9 +52,9 @@
     <!-- DataTables -->
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
 
-    @permission('company-delete'){{ Html::script('bqsafety/js/company.js') }}@endpermission
+    @permission('users-delete'){{ Html::script('bqsafety/js/users.js') }}@endpermission
 
-    @permission(['company-create','company-edit','company-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
+    @permission(['users-create','users-edit','users-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
 
     <script>
         $(function () {
@@ -60,17 +62,23 @@
         });
 
         $(document).ready(function () {
-            $('#grid-companies').DataTable({
+            $('#grid-users').DataTable({
                 "bAutoWidth": false,
                 "order": [[0, "desc"]],
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ url('api/companies') }}",
+                "ajax": "{{ url('api/users') }}",
                 "columns": [
                     {data: 'id', name: 'id', sClass: 'text-center font-weight-bold'},
+                    {data: 'roles', name: 'roles', sClass: 'text-center'},
                     {data: 'created_at', name: 'created_at', sClass: 'text-center'},
+                    {data: 'user_username', name: 'user_username', sClass: 'text-center'},
+                    {data: 'user_names', name: 'user_names'},
                     {data: 'company_name', name: 'company_name'},
-                    {data: 'company_description', name: 'company_description'},
+                    {data: 'user_code', name: 'user_code'},
+                    {data: 'user_job', name: 'user_job', sClass: 'text-right'},
+                    {data: 'user_email', name: 'user_email', sClass: 'text-center'},
+                    {data: 'user_status', name: 'user_status'},
                     {data: 'action', name: 'action', sClass: 'actions text-center', orderable: false, searchable: false}
                 ],
                 "language": {

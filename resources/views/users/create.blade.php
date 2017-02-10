@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Editar Ubicación')
+@section('title', 'Nueva Ubicación')
 
 @section('content')
 
@@ -14,10 +14,10 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-block">
-                            <h1><i class="fa fa-pencil"></i>Editar Ubicación</h1>
+                            <h1><i class="fa fa-plus"></i>Nueva Ubicación</h1>
                             <hr>
 
-                            {!! Form::model($location, ['route' => ['location.update', $location->id], 'method' => 'PUT']) !!}
+                            {{ Form::open(['route'=>'location.store']) }}
 
                                 <div class="form-group{{ $errors->has('location_name') ? ' has-danger' : '' }}  row">
                                     <label for="location_name" class="col-lg-2 col-form-label text-lg-right">Nombre:
@@ -41,21 +41,13 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="location_status" class="col-lg-2 col-form-label text-lg-right">Activo</label>
-                                    <div class="col-lg-10 mt-2">
-                                        {!! Form::hidden('location_status', 0) !!}
-                                        {!! Form::checkbox('location_status') !!}
-                                    </div>
-                                </div>
-
-
                                 <div class="offset-lg-2 text-muted mb-3">
                                     (<span class="text-danger">*</span>) campos obligatorios
                                 </div>
 
                                 <div class="form-actions text-right">
-                                    {{ Form::submit('Actualizar', ['name'=>'action', 'class'=>'btn btn-success']) }}
+                                    {{ Form::submit('Guardar', ['name'=>'action', 'class'=>'btn btn-success']) }}
+                                    {{ Form::submit('Guardar y crear otro', ['name'=>'action', 'class'=>'btn btn-create']) }}
                                     <a href="{{ url('/location') }}" class="btn btn-secondary">Cancelar</a>
                                 </div>
 

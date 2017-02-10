@@ -15,8 +15,12 @@
                     <div class="row">
                         <h1 class="col-lg-6"><i class="fa fa-eye"></i>Ubicación: {{ $location->location_name }}</h1>
                         <div class="col-lg-6 text-right">
+                            @permission('location-create')
                             <a href="{{ url('/location/create') }}" class="btn btn-create btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+                            @endpermission
+                            @permission('location-edit')
                             <a href="{{ url('/location/'.$location->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                            @endpermission
                             <a href="{{ url('/location') }}" class="btn btn-secondary btn-sm"><i class="fa fa-list" aria-hidden="true"></i> Ubicaciones</a>
                         </div>
                     </div>

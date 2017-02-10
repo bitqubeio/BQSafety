@@ -14,7 +14,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.3.0",
         "narutimateum/toastr-5.2-laravel": "dev-master",
-        "yajra/laravel-datatables-oracle": "7.*"
+        "yajra/laravel-datatables-oracle": "7.*",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

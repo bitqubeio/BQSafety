@@ -15,7 +15,7 @@
                     <div class="row">
                         <h1 class="col-lg-6"><i class="fa fa-file-text-o"></i>Reporte: #{{ $reportsheet->id }}</h1>
                         <div class="col-lg-6 text-right">
-                            @permission('my-reportsheet-export-pdf')
+                            @permission('reportsheet-export-pdf')
                             <div class="btn-group ml-2">
                                 <button type="button" class="btn btn-sm btn-danger">Exportar a PDF</button>
                                 <button type="button" class="btn btn-sm btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,10 +28,7 @@
                                 </div>
                             </div>
                             @endpermission
-                            @permission('my-reportsheet-create')
-                            <a href="{{ url('/reportsheet/create') }}" class="btn btn-create btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
-                            @endpermission
-                            <a href="{{ url('/reportsheet') }}" class="btn btn-secondary btn-sm"><i class="fa fa-list" aria-hidden="true"></i> Mis Reportes</a>
+                            <a href="{{ url('/reportsheets') }}" class="btn btn-secondary btn-sm"><i class="fa fa-list" aria-hidden="true"></i> Lista de Reportes</a>
                         </div>
                     </div>
 

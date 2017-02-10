@@ -6,10 +6,13 @@ use App\Traits\DatesTranslator;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
     use DatesTranslator;
+
+    use EntrustUserTrait;
 
     use Notifiable;
 
@@ -27,6 +30,7 @@ class User extends Authenticatable
         'user_job',
         'user_area',
         'user_email',
+        'user_status',
         'password',
     ];
 
