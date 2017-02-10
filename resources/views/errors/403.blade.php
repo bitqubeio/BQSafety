@@ -1,13 +1,17 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container mt-5">
-        <div class="jumbotron">
-            <h1 class="display-3">Error 403!</h1>
-            <p class="lead">Usted no está autorizado para ver este recurso.</p>
-            <p><a class="btn btn-lg btn-success" href="#" role="button" onclick="goBack()">Regresar a BQSafety</a></p>
+    <section id="main">
+        <div id="error">
+            <div class="text-center">
+                <img src="{{ url('/bqsafety/img/error.png') }}" alt="" class="error-img">
+                <h2 class="mt-3">¡Acceso denegado!</h2>
+                <p>Usted no tiene permisos requeridos para ingresar a esta parte del sistema. </p>
+                <p>Contacte con el administrador.</p>
+                <p><a class="btn btn-sm btn-create" href="#" role="button" onclick="goBack()">← Regresar a BQSafety</a></p>
+            </div>
         </div>
-    </div>
+    </section>
     <script>
         function goBack() {
             window.history.back();

@@ -60,11 +60,11 @@ Route::group(['middleware' => ['auth']], function () {
     // show
     Route::get('reportsheet/{id}', ['as' => 'reportsheet.show', 'uses' => 'ReportsheetController@show', 'middleware' => ['permission:my-reportsheet-list']]);
     // PDF show
-    Route::get('reportsheetPDFShow/{id}', ['as' => 'reportsheetPDFShow.pdfShow', 'uses' => 'ReportsheetController@pdfShow', 'middleware' => ['permission:my-reportsheet-export-pdf']]);
+    Route::get('myreportsheetPDFShow/{id}', ['as' => 'reportsheetPDFShow.pdfShow', 'uses' => 'ReportsheetController@pdfShow', 'middleware' => ['permission:my-reportsheet-export-pdf']]);
     // PDF download
-    Route::get('reportsheetPDFDownload/{id}', ['as' => 'reportsheetPDFDownload.pdfDownload', 'uses' => 'ReportsheetController@pdfDownload', 'middleware' => ['permission:my-reportsheet-export-pdf']]);
+    Route::get('myreportsheetPDFDownload/{id}', ['as' => 'reportsheetPDFDownload.pdfDownload', 'uses' => 'ReportsheetController@pdfDownload', 'middleware' => ['permission:my-reportsheet-export-pdf']]);
     // PDF with image
-    Route::get('reportsheetPDFDownloadWithImage/{id}', ['as' => 'reportsheetPDFDownloadWithImage.pdfDownloadWithImage', 'uses' => 'ReportsheetController@pdfDownloadWithImage', 'middleware' => ['permission:my-reportsheet-export-pdf']]);
+    Route::get('myreportsheetPDFDownloadWithImage/{id}', ['as' => 'reportsheetPDFDownloadWithImage.pdfDownloadWithImage', 'uses' => 'ReportsheetController@pdfDownloadWithImage', 'middleware' => ['permission:my-reportsheet-export-pdf']]);
 
     /*
     |--------------------------------------------------------------------------

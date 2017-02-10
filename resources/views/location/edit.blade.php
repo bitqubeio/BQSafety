@@ -17,7 +17,7 @@
                             <h1><i class="fa fa-pencil"></i>Editar Ubicación</h1>
                             <hr>
 
-                            {!! Form::model($location, ['route' => ['location.update', $location->id], 'method' => 'PUT']) !!}
+                            {!! Form::model($location, ['route' => ['location.update', $location->id], 'method' => 'PATCH']) !!}
 
                                 <div class="form-group{{ $errors->has('location_name') ? ' has-danger' : '' }}  row">
                                     <label for="location_name" class="col-lg-2 col-form-label text-lg-right">Nombre:

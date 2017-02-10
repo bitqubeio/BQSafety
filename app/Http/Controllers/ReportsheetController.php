@@ -274,7 +274,14 @@ class ReportsheetController extends Controller
 
     public function pdfDownloadWithImage($id)
     {
-        //
+        // find
+        $reportsheet = Reportsheet::findOrFail($id);
+
+        //pdf
+        $pdf = PDF::loadView('reportsheet.pdfwithimage', ['reportsheet' => $reportsheet]);
+
+        // download archive
+        return $pdf->setPaper('a4', 'landscape')->download('hoja_de_reporte_nro_' . $id . '.pdf');
     }
 
     public function edit($id)
