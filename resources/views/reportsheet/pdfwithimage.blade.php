@@ -11,16 +11,17 @@
         html,
         body {
             font-family: sans-serif;
-            font-size: 12.5px;
+            font-size: 11px;
         }
     </style>
 </head>
 
 <body>
-<table width="100%" border="0" cellspacing="3" cellpadding="3">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td width="50%">
-            <table width="100%" border="0" cellspacing="2" cellpadding="5" bgcolor="#000">
+        <td width="50%" style="padding-left: 20px">
+
+            <table width="351" border="0" cellspacing="2" cellpadding="5" bgcolor="#000">
                 <tbody>
                 <tr>
                     <td valign="middle" align="center" bgcolor="#F2F2F2">
@@ -133,8 +134,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#FFFFFF" valign="top" style="padding-bottom:15px;height: 69px;">
-                        <span align="justify">{{ $reportsheet->reportsheet_description }}</span>
+                    <td bgcolor="#FFFFFF" valign="top">
+                        <div align="justify" style="padding-bottom:5px;height:87px">{{ $reportsheet->reportsheet_description }}</div>
                     </td>
                 </tr>
                 <tr>
@@ -146,7 +147,7 @@
                 </tr>
                 <tr>
                     <td bgcolor="#FFFFFF" valign="top">
-                        <div align="justify" style="padding:3px 0 50px 0;height: 69px;">{{ $reportsheet->reportsheet_correctiveaction }}</div>
+                        <div align="justify" style="padding:0px 0 43px 0;height:88px">{{ $reportsheet->reportsheet_correctiveaction }}</div>
                         <table width="100%" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td>&nbsp;</td>
@@ -177,16 +178,19 @@
                 </tr>
                 </tbody>
             </table>
-            <table width="100%" cellpadding="1" cellspacing="1">
+            <table width="351" cellpadding="1" cellspacing="1">
                 <tr>
                     <td align="left" width="30%"><b>SI-F-116</b></td>
                     <td align="center" width="40%" style="font-size:50%">Hoja de Reporte N° {{ $reportsheet->id }}</td>
                     <td align="right" width="30%"><b>REVISIÓN:00</b></td>
                 </tr>
             </table>
+
         </td>
-        <td width="50%">
-            <table width="100%" border="0" cellspacing="2" cellpadding="5" bgcolor="#000">
+
+        <td width="50%" style="padding-left: 20px">
+
+            <table width="351" border="0" cellspacing="2" cellpadding="5" bgcolor="#000">
                 <tbody>
                 <tr>
                     <td valign="middle" align="center" bgcolor="#F2F2F2">
@@ -297,9 +301,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor="#FFFFFF" align="center" style="height: 210.1px; vertical-align: middle">
+                    <td bgcolor="#FFFFFF" align="center" style="vertical-align: middle;height:244px;">
                         <a target="_blank" href="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}">
-                            <img style="width: 260px; max-height: 200px;border: 1px solid black" src="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}" title="Ver">
+                            <img style="width: 280px; max-height: 200px;border: 1px solid black" src="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}">
                         </a>
                     </td>
                 </tr>
@@ -336,16 +340,16 @@
                 </tr>
                 </tbody>
             </table>
-            <table width="100%" cellpadding="1" cellspacing="1">
+            <table width="351" cellpadding="1" cellspacing="1">
                 <tr>
                     <td align="left" width="30%"><b>SI-F-116</b></td>
                     <td align="center" width="40%" style="font-size:50%">Hoja de Reporte N° {{ $reportsheet->id }}</td>
                     <td align="right" width="30%"><b>REVISIÓN:00</b></td>
                 </tr>
             </table>
+
         </td>
     </tr>
 </table>
-
 </body>
 </html>

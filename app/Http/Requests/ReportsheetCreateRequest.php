@@ -26,8 +26,8 @@ class ReportsheetCreateRequest extends FormRequest
         return [
             'location_id' => 'required',
             'reportsheet_classification' => 'required',
-            'reportsheet_description' => 'required|max:250',
-            'reportsheet_correctiveaction' => 'max:250',
+            'reportsheet_description' => 'required|max:500',
+            'reportsheet_correctiveaction' => 'max:500',
             'reportsheet_image' => 'image|mimes:jpeg,jpg,bmp,png',
         ];
     }

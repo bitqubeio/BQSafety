@@ -11,7 +11,7 @@
         html,
         body {
             font-family: sans-serif;
-            font-size: 12.5px;
+            font-size: 11px;
         }
     </style>
 </head>
@@ -124,26 +124,26 @@
     </tr>
     <tr>
         <td align="center" bgcolor="#F2F2F2" style="padding:7px 0;">
-                <b>DESCRIPCIÓN DE REPORTE:</b>
-                <br>
-                <span align="justify" style="font-size:70%">¿Dónde y cómo ocurrio el evento? ¿Qué estaba haciendo la persona durante el evento? ¿Qué sucedió inesperadamente?. De preferencia colocar el nombre del afectado si corresponde.</span>
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="#FFFFFF" valign="top" style="padding-bottom:15px;height: 69px;">
-            <span align="justify">{{ $reportsheet->reportsheet_description }}</span>
-        </td>
-    </tr>
-    <tr>
-        <td align="center" bgcolor="#F2F2F2" style="padding:7px 0;">
-                <b>ACCIÓN CORRECTIVA:</b>
-                <br>
-                <span align="justify" style="font-size:70%">Colocar las acciones que se tomaron en el momento según corresponda.</span>
+            <b>DESCRIPCIÓN DE REPORTE:</b>
+            <br>
+            <span align="justify" style="font-size:70%">¿Dónde y cómo ocurrio el evento? ¿Qué estaba haciendo la persona durante el evento? ¿Qué sucedió inesperadamente?. De preferencia colocar el nombre del afectado si corresponde.</span>
         </td>
     </tr>
     <tr>
         <td bgcolor="#FFFFFF" valign="top">
-            <div align="justify" style="padding:3px 0 50px 0;height: 69px;">{{ $reportsheet->reportsheet_correctiveaction }}</div>
+            <div align="justify" style="padding-bottom:5px;height:89px;">{{ $reportsheet->reportsheet_description }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="#F2F2F2" style="padding:7px 0;">
+            <b>ACCIÓN CORRECTIVA:</b>
+            <br>
+            <span align="justify" style="font-size:70%">Colocar las acciones que se tomaron en el momento según corresponda.</span>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF" valign="top">
+            <div align="justify" style="padding:0px 0 50px 0;height: 80px;">{{ $reportsheet->reportsheet_correctiveaction }}</div>
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>&nbsp;</td>
@@ -181,6 +181,5 @@
         <td align="right" width="30%"><b>REVISIÓN:00</b></td>
     </tr>
 </table>
-
 </body>
 </html>

@@ -163,7 +163,7 @@ return [
         'location_id'          => 'lugar',
         'reportsheet_classification' => 'clasificación',
         'reportsheet_description' => 'descripción del reporte',
-        'reportsheet_correctiveaction' => 'acción Correctiva',
+        'reportsheet_correctiveaction' => 'acción correctiva',
         'reportsheet_image' => 'foto',
 
         'display_name' => 'nombre para mostrar',
