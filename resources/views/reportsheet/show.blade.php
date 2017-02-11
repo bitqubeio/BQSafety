@@ -22,7 +22,7 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ url('/myreportsheetPDFShow/'.$reportsheet->id) }}">Ver en pantalla</a>
+                                    <a class="dropdown-item" target="_blank" href="{{ url('/myreportsheetPDFShow/'.$reportsheet->id) }}">Ver en pantalla</a>
                                     <a class="dropdown-item" href="{{ url('/myreportsheetPDFDownload/'.$reportsheet->id) }}">Descargar</a>
                                     <a class="dropdown-item" href="{{ url('/myreportsheetPDFDownloadWithImage/'.$reportsheet->id) }}">Descargar con foto</a>
                                 </div>

@@ -30,9 +30,9 @@
                             <th>Ubicación</th>
                             <th>Clasificación</th>
                             <th>Descripción</th>
-                            <th>Accion Correctiva</th>
+                            <th>Acción Correctiva</th>
                             <th>Foto</th>
-                            <th>Accion</th>
+                            <th>Acción</th>
                         </tr>
                         </thead>
                     </table>

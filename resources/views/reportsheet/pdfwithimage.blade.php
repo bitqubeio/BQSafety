@@ -299,7 +299,7 @@
                 <tr>
                     <td bgcolor="#FFFFFF" align="center" style="height: 210.1px; vertical-align: middle">
                         <a target="_blank" href="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}">
-                            <img style="width: 260px; border: 1px solid black" src="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}" title="Ver">
+                            <img style="width: 260px; max-height: 200px;border: 1px solid black" src="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}" title="Ver">
                         </a>
                     </td>
                 </tr>
