@@ -90,6 +90,81 @@ class ReportsheetController extends Controller
             ->make(true);
     }
 
+    public function listPendingReportSheets()
+    {
+        // report sheets
+        $reportsheets = Reportsheet::where('reportsheet_status', 1)
+            ->join('tracking_report_sheets', 'tracking_report_sheets.reportsheet_id', '=', 'reportsheets.id')
+            ->join('users', 'users.id', '=', 'reportsheets.user_id')
+            ->join('locations', 'locations.id', '=', 'reportsheets.location_id')
+            ->select([
+                'reportsheets.id',
+                'reportsheets.created_at',
+                'tracking_report_sheet_responsible',
+                'tracking_report_sheet_start_date',
+                'tracking_report_sheet_end_date',
+                'tracking_report_sheet_description',
+                'user_username',
+                'avatar',
+                'location_name',
+                'reportsheet_classification',
+                'reportsheet_description',
+                'reportsheet_image',
+                'reportsheet_status'
+            ])
+            ->get();
+
+        // return
+        return Datatables::of($reportsheets)
+            ->addColumn('action', function ($reportsheet) {
+                return ' <a href="reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
+            })
+            ->editColumn('reportsheet_status', function () {
+                return '<span class="badge badge-danger badge-md"><i class="fa fa-clock-o"></i> Pendiente</span>';
+            })
+            ->editColumn('user_username', function ($reportsheet) {
+                return '<small class="text-muted">' . $reportsheet->user_username . '</small><div class="imageuser"><ul><li><img src="images/avatars/' . $reportsheet->avatar . '"></li></ul></div>';
+            })
+            ->editColumn('reportsheet_description', function ($reportsheet) {
+                return '<p class="small ">' . $reportsheet->location_name . '<br>' . str_limit($reportsheet->reportsheet_description, 47) . '</p>';
+            })
+            ->editColumn('reportsheet_classification', function ($reportsheet) {
+                $classifications = $reportsheet->reportsheet_classification;
+                $classification = explode(',', $classifications);
+                $var = null;
+                if (in_array(1, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E25668"></i> Accidente Seguridad</span><br>';
+                }
+                if (in_array(2, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #CF56E2"></i> Incidente Seguridad</span><br>';
+                }
+                if (in_array(3, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #8A56E2"></i> Acto Subestandar</span><br>';
+                }
+                if (in_array(4, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #68E256"></i> Accidente Ambiental</span><br>';
+                }
+                if (in_array(5, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E2CF56"></i> Incidente Ambiental</span><br>';
+                }
+                if (in_array(6, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E28956"></i> Condición Subestandar</span><br>';
+                }
+                return $var;
+            })
+            ->editColumn('tracking_report_sheet_responsible', function ($reportshet) {
+                return '<p class="small">' . $reportshet->tracking_report_sheet_responsible . '</p><span class="badge badge-success badge-md"><i class="fa fa-calendar-minus-o"></i> ' . $reportshet->tracking_report_sheet_start_date->toFormattedDateString() . '</span> - <span class="badge badge-success badge-md"><i class="fa fa-calendar-check-o"></i> ' . $reportshet->tracking_report_sheet_end_date->toFormattedDateString() . '</span>';
+            })
+            ->editColumn('tracking_report_sheet_description', function ($reportshet) {
+                return '<p class="small">' . str_limit($reportshet->tracking_report_sheet_description, 47) . '</p>';
+            })
+            ->editColumn('reportsheet_image', function ($reportsheet) {
+                return '<div class="imageitem"><ul><li><img src="images/reportsheets/thumbnail/' . $reportsheet->reportsheet_image . '"></li></ul></div>';
+            })
+            ->rawColumns(['action', 'reportsheet_status', 'user_username', 'reportsheet_description', 'reportsheet_classification', 'tracking_report_sheet_responsible', 'tracking_report_sheet_description', 'reportsheet_image'])
+            ->make(true);
+    }
+
     public function listing()
     {
         // report sheets
@@ -170,6 +245,11 @@ class ReportsheetController extends Controller
     {
         // view
         return view('reportsheet.all');
+    }
+
+    public function pendingReportsheets()
+    {
+        return view('reportsheet.pendingreportsheets');
     }
 
     public function index()

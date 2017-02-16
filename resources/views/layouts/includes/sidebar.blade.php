@@ -35,10 +35,10 @@
                 <a class="{{ Request::is('reportsheets*') ? 'active' : null }}" href="#" data-toggle="collapse" data-target="#menu2" aria-expanded="false" aria-controls="menu2"><i class="fa fa-folder"></i> <span class="title">Reportes</span></a>
                 <div class="sidsebar-left-dropdown">
                     <ul class="collapse" id="menu2">
-                        <li><a href="{{ url('reportsheets')  }}"><i class="fa fa-file-text-o" style="color: deepskyblue"></i> <span class="title">Nuevos reportes</span></a></li>
-                        <li><a href="{{ url('reportsheets')  }}"><i class="fa fa-file-text-o" style="color: red"></i> <span class="title">Reportes en pendiente</span></a></li>
-                        <li><a href="{{ url('reportsheets')  }}"><i class="fa fa-file-text-o" style="color: yellow"></i> <span class="title">Reportes en proceso</span></a></li>
-                        <li><a href="{{ url('reportsheets')  }}"><i class="fa fa-file-text-o" style="color: springgreen"></i> <span class="title">Reportes levantados</span></a></li>
+                        <li><a href="{{ url('reportsheets')  }}"><i class="fa fa-file-text-o"></i> <span class="title">Reportes recientes</span></a></li>
+                        <li><a href="{{ url('pendingReportsheets')  }}"><i class="fa fa-file-text-o" style="color: #E34A2B"></i> <span class="title">Reportes pendientes</span></a></li>
+                        <li><a href="{{ url('processReportsheets')  }}"><i class="fa fa-file-text-o" style="color: #FFD84D"></i> <span class="title">Reportes en proceso</span></a></li>
+                        <li><a href="{{ url('gottenupreportsheets')  }}"><i class="fa fa-file-text-o" style="color: #39B38C"></i> <span class="title">Reportes levantados</span></a></li>
                     </ul>
                 </div>
             @endpermission

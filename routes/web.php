@@ -21,6 +21,9 @@ Auth::routes();
 Route::resource('dashboard', 'DashboardController');
 Route::resource('TrackingReportSheet', 'TrackingReportSheetController');
 
+Route::get('pendingReportsheets', 'ReportsheetController@pendingReportsheets');
+Route::get('api/listPendingReportSheets', 'ReportsheetController@listPendingReportSheets');
+
 // entrust
 Route::group(['middleware' => ['auth']], function () {
 
