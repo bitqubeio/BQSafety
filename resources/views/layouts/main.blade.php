@@ -42,8 +42,14 @@
     {{ Html::style('bqsafety/libs/datatables/css/jquery.dataTable.bootstrap4.css') }}
     {{ Html::style('https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css') }}
 
+    <!-- Datepicker Files -->
+    {{ Html::style('bqsafety/libs/datePicker/css/bootstrap-datepicker3.css') }}
+    {{ Html::style('bqsafety/libs/datePicker/css/bootstrap-datepicker.standalone.css') }}
+
     <!-- Global style -->
     {{ Html::style('bqsafety/css/main.css') }}
+
+    <!-- summernote -->
 
     <!-- Scripts -->
     <script>
@@ -78,8 +84,14 @@
     {{ Html::script('bqsafety/libs/bootstrap/js/tether.min.js') }}
     {{ Html::script('bqsafety/libs/bootstrap/js/bootstrap.min.js') }}
     {{ Html::script('bqsafety/js/bootstrap-filestyle.js') }}
-    {{ Html::script('bqsafety/libs/datepicker/js/bootstrap-datepicker.min.js') }}
-    {{ Html::script('bqsafety/libs/datepicker/locales/bootstrap-datepicker.es.min.js') }}
+
+    <!-- Datepicker Files -->
+    {{ Html::script('bqsafety/libs/datePicker/js/bootstrap-datepicker.js') }}
+    <!-- Language -->
+    {{ Html::script('bqsafety/libs/datePicker/locales/bootstrap-datepicker.es.min.js') }}
+
+    <!-- Charts -->
+    {{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js') }}
 
     <!-- Global script -->
     {{ Html::script('bqsafety/js/global.js') }}

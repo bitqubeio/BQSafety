@@ -43,20 +43,21 @@
     @include('partials.modalQuestion')
     @endpermission
 
+    @include('trackingreportsheet.create')
+
 @endsection
 
 @section('javascript')
 
     <!-- DataTables -->
+    {{ Html::script('bqsafety/js/tracking.js') }}
+    {{ Html::script('bqsafety/js/alerts.js') }}
+    {{ Html::script('bqsafety/js/toastr.js') }}
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
 
     @permission(['reportsheet-create','reportsheet-edit','reportsheet-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
 
     <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        });
-
         $(document).ready(function () {
             $('#grid-reportsheets').DataTable({
                 "bAutoWidth": false,
@@ -81,6 +82,22 @@
                 keys: true,
                 stateSave: true
             });
+        });
+
+        // datePicker
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            todayBtn: 'linked',
+            language: "es",
+            orientation: "bottom auto",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        // hide window create
+        $('.chatter-close, #cancel_discussion').click(function () {
+            resetAll(formTrackingReportSheet);
+            $('#new_discussion').slideUp();
         });
     </script>
 @endsection

@@ -16,7 +16,8 @@ class ReportsheetController extends Controller
     public function allListing()
     {
         // report sheets
-        $reportsheets = Reportsheet::join('users', 'users.id', '=', 'reportsheets.user_id')
+        $reportsheets = Reportsheet::where('reportsheet_status', 0)
+            ->join('users', 'users.id', '=', 'reportsheets.user_id')
             ->join('locations', 'locations.id', '=', 'reportsheets.location_id')
             ->select([
                 'reportsheets.id',
@@ -34,7 +35,8 @@ class ReportsheetController extends Controller
         // return
         return Datatables::of($reportsheets)
             ->addColumn('action', function ($reportsheet) {
-                return '<a href="reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
+                $newControl = '<button value="' . $reportsheet->id . '" onclick="showWindowControl(this);"><i class="fa fa-calendar-check-o" aria-hidden="true" title="Seguimiento y Control"></i></button>';
+                return $newControl . ' <a href="reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
             })
             ->editColumn('created_at', function ($reportsheet) {
                 return '<span class="badge badge-success badge-md"><i class="fa fa-clock-o"></i> ' . $reportsheet->created_at->toFormattedDateString() . '</span>';
@@ -179,7 +181,9 @@ class ReportsheetController extends Controller
     public function create()
     {
         // locations
-        $locations = Location::where('location_status', 1)->pluck('location_name', 'id');
+        $locations = Location::where('location_status', 1)
+            ->orderBy('location_name', 'ASC')
+            ->pluck('location_name', 'id');
 
         // redirect
         return view('reportsheet.create', ['locations' => $locations]);

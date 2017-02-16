@@ -24,7 +24,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-10">
-                                        {{ Form::select('location_id', $locations, null, ['placeholder' => 'Seleccione una ubicación...', 'class'=>'form-control','autofocus'=>'']) }}
+                                        {{ Form::select('location_id', $locations, null, ['placeholder' => 'Seleccione ubicación...', 'class'=>'form-control','autofocus']) }}
                                         @if ($errors->has('location_id'))
                                             <span class="form-control-feedback">{{ $errors->first('location_id') }}</span>
                                         @endif

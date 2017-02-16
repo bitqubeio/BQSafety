@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//
+Route::resource('dashboard', 'DashboardController');
+Route::resource('TrackingReportSheet', 'TrackingReportSheetController');
+
 // entrust
 Route::group(['middleware' => ['auth']], function () {
 

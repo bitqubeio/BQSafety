@@ -21,6 +21,7 @@ class CreateReportsheetsTable extends Migration
             $table->string('reportsheet_description', 500);
             $table->string('reportsheet_correctiveaction', 500)->nullable();
             $table->string('reportsheet_image')->default('default.png');
+            $table->tinyInteger('reportsheet_status')->unsigned()->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
