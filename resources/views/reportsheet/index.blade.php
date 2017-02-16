@@ -31,6 +31,7 @@
                             <th>Clasificación</th>
                             <th>Descripción</th>
                             <th>Acción Correctiva</th>
+                            <th>Estado</th>
                             <th>Foto</th>
                             <th>Acción</th>
                         </tr>
@@ -67,9 +68,10 @@
                     {data: 'created_at', name: 'created_at', sClass: 'text-center'},
                     {data: 'user_username', name: 'user_username', sClass: 'text-center'},
                     {data: 'location_name', name: 'location_name'},
-                    {data: 'reportsheet_classification', name: 'reportsheet_classification', sClass: 'text-center'},
+                    {data: 'reportsheet_classification', name: 'reportsheet_classification'},
                     {data: 'reportsheet_description', name: 'reportsheet_description'},
                     {data: 'reportsheet_correctiveaction', name: 'reportsheet_correctiveaction'},
+                    {data: 'reportsheet_status', name: 'reportsheet_status', sClass: 'text-center'},
                     {data: 'reportsheet_image', name: 'reportsheet_image', sClass: 'text-center'},
                     {data: 'action', name: 'action', sClass: 'actions text-center', orderable: false, searchable: false}
                 ],

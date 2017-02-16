@@ -24,6 +24,12 @@ Route::resource('TrackingReportSheet', 'TrackingReportSheetController');
 Route::get('pendingReportsheets', 'ReportsheetController@pendingReportsheets');
 Route::get('api/listPendingReportSheets', 'ReportsheetController@listPendingReportSheets');
 
+Route::get('processReportsheets', 'ReportsheetController@processReportsheets');
+Route::get('api/listProcessReportSheets', 'ReportsheetController@listProcessReportSheets');
+
+Route::get('gottenupReportsheets', 'ReportsheetController@gottenupReportsheets');
+Route::get('api/listGottenupReportSheets', 'ReportsheetController@listGottenupReportSheets');
+
 // entrust
 Route::group(['middleware' => ['auth']], function () {
 
