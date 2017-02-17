@@ -11,6 +11,15 @@ function showWindowControl(btn) {
     $('#tracking_report_sheet_responsible').focus();
 }
 
+function view(option) {
+    if (option == 1 || option == 2) {
+        $('#field_tracking_report_sheet_image').hide();
+    }
+    if (option == 3) {
+        $('#field_tracking_report_sheet_image').show();
+    }
+}
+
 $("#formTrackingReportSheet").on('submit', (function (e) {
     e.preventDefault();
     var route = $('#formTrackingReportSheet').data('url');

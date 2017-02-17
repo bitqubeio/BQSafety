@@ -29,7 +29,8 @@ class TrackingReportSheetCreateRequest extends FormRequest
             'tracking_report_sheet_status' => 'required',
             'tracking_report_sheet_start_date' => 'required|date_format:d/m/Y',
             'tracking_report_sheet_end_date' => 'required|date_format:d/m/Y|after:tracking_report_sheet_start_date',
-            'tracking_report_sheet_description' => 'required|min:10'
+            'tracking_report_sheet_description' => 'required|min:10',
+            'tracking_report_sheet_image' => 'image|mimes:jpeg,jpg,bmp,png'
         ];
     }
 }

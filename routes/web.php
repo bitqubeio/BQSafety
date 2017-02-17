@@ -17,19 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//
-Route::resource('dashboard', 'DashboardController');
-Route::resource('TrackingReportSheet', 'TrackingReportSheetController');
-
-Route::get('pendingReportsheets', 'ReportsheetController@pendingReportsheets');
-Route::get('api/listPendingReportSheets', 'ReportsheetController@listPendingReportSheets');
-
-Route::get('processReportsheets', 'ReportsheetController@processReportsheets');
-Route::get('api/listProcessReportSheets', 'ReportsheetController@listProcessReportSheets');
-
-Route::get('gottenupReportsheets', 'ReportsheetController@gottenupReportsheets');
-Route::get('api/listGottenupReportSheets', 'ReportsheetController@listGottenupReportSheets');
-
 // entrust
 Route::group(['middleware' => ['auth']], function () {
 
@@ -39,7 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::get('/home', 'HomeController@index');
+    //Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'DashboardController@home');
 
     /*
     |--------------------------------------------------------------------------
@@ -163,6 +151,25 @@ Route::group(['middleware' => ['auth']], function () {
     // destroy
     Route::delete('users/{id}', ['as' => 'users.destroy', 'uses' => 'UserController@destroy', 'middleware' => ['permission:users-delete']]);
 
+    /*
+    |--------------------------------------------------------------------------
+    | TRACKING
+    |--------------------------------------------------------------------------
+    */
+
+    //Route::resource('TrackingReportSheet', 'TrackingReportSheetController');
+    // json api
+    Route::get('api/listTrackingReportSheets/{type}', ['as' => 'listTrackingReportSheets.listTrackingReportSheets', 'uses' => 'ReportsheetController@listTrackingReportSheets', 'middleware' => ['permission:tracking-list']]);
+    // view tracking
+    Route::get('trackingreportsheets/{type}', ['as' => 'trackingreportsheets.trackingReportSheets', 'uses' => 'ReportsheetController@trackingReportSheets', 'middleware' => ['permission:tracking-list']]);
+    // create
+    Route::get('TrackingReportSheet/create', ['as' => 'TrackingReportSheet.create', 'uses' => 'TrackingReportSheetController@create', 'middleware' => ['permission:tracking-create']]);
+    // store
+    Route::post('TrackingReportSheet/create', ['as' => 'TrackingReportSheet.store', 'uses' => 'TrackingReportSheetController@store', 'middleware' => ['permission:tracking-create']]);
+    // edit
+    Route::get('TrackingReportSheet/{id}/edit', ['as' => 'TrackingReportSheet.edit', 'uses' => 'TrackingReportSheetController@edit', 'middleware' => ['permission:tracking-edit']]);
+    // update
+    Route::patch('TrackingReportSheet/{id}', ['as' => 'TrackingReportSheet.update', 'uses' => 'TrackingReportSheetController@update', 'middleware' => ['permission:tracking-edit']]);
 
 });
 

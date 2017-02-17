@@ -1,6 +1,12 @@
 @extends('layouts.main')
 
-@section('title', 'Reportes en proceso')
+@if($type == 1)
+    @section('title', 'Reportes Pendientes')
+@elseif($type == 2)
+    @section('title', 'Reportes en Proceso')
+@elseif($type == 3)
+    @section('title', 'Reportes Levantados')
+@endif
 
 @section('content')
 
@@ -9,7 +15,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                        <h1 class="col-lg-6"><i class="fa fa-file-text-o"></i>Reportes en proceso</h1>
+                        <h1 class="col-lg-6"><i class="fa fa-file-text-o"></i>
+                            @if($type == 1)
+                                Reportes Pendientes
+                            @elseif($type == 2)
+                                Reportes en Proceso
+                            @elseif($type == 3)
+                                Reportes Levantados
+                            @endif
+                        </h1>
                         <div class="col-lg-6 text-right">
                             <!-- buttons -->
                         </div>
@@ -18,8 +32,8 @@
             </div>
             <div class="row my-4">
                 <div class="col-lg-12">
-                    <table class="table responsive table-bqsafety table-hover" id="grid-processreportsheets"
-                           data-url="{{ url('location') }}">
+                    <table class="table responsive table-bqsafety table-hover" id="grid-reportsheets"
+                           data-url="{{ url('TrackingReportSheet') }}">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -43,35 +57,41 @@
     @include('partials.modalQuestion')
     @endpermission
 
-    @include('trackingreportsheet.create')
+    @permission('tracking-edit')
+    @include('trackingreportsheet.edit')
+    @endpermission
 
 @endsection
 
 @section('javascript')
 
     <!-- DataTables -->
-    {{ Html::script('bqsafety/js/tracking.js') }}
+    @permission('tracking-edit')
+    {{ Html::script('bqsafety/js/trackingupdate.js') }}
     {{ Html::script('bqsafety/js/alerts.js') }}
     {{ Html::script('bqsafety/js/toastr.js') }}
+    @endpermission
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
-
-    @permission(['reportsheet-create','reportsheet-edit','reportsheet-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
 
     <script>
         $(document).ready(function () {
-            $('#grid-processreportsheets').DataTable({
+            $('#grid-reportsheets').DataTable({
                 "bAutoWidth": false,
                 "order": [[0, "desc"]],
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ url('api/listProcessReportSheets') }}",
+                "ajax": "{{ url('api/listTrackingReportSheets/'.$type) }}",
                 "columns": [
                     {data: 'id', name: 'id', sClass: 'text-center font-weight-bold'},
                     {data: 'reportsheet_status', name: 'reportsheet_status', sClass: 'text-center'},
                     {data: 'user_username', name: 'user_username', sClass: 'text-center'},
                     {data: 'reportsheet_classification', name: 'reportsheet_classification'},
                     {data: 'reportsheet_description', name: 'reportsheet_description'},
-                    {data: 'tracking_report_sheet_responsible', name: 'tracking_report_sheet_responsible', sClass: 'text-center'},
+                    {
+                        data: 'tracking_report_sheet_responsible',
+                        name: 'tracking_report_sheet_responsible',
+                        sClass: 'text-center'
+                    },
                     {data: 'tracking_report_sheet_description', name: 'tracking_report_sheet_description'},
                     {data: 'reportsheet_image', name: 'reportsheet_image', sClass: 'text-center'},
                     {data: 'action', name: 'action', sClass: 'actions text-center', orderable: false, searchable: false}
@@ -83,7 +103,7 @@
                 stateSave: true
             });
         });
-
+        @permission('tracking-edit')
         // datePicker
         $('.datepicker').datepicker({
             format: "dd/mm/yyyy",
@@ -99,5 +119,6 @@
             resetAll(formTrackingReportSheet);
             $('#new_discussion').slideUp();
         });
+        @endpermission
     </script>
 @endsection

@@ -4,6 +4,7 @@ namespace App;
 
 use App\Traits\DatesTranslator;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class TrackingReportSheet extends Model
 {
@@ -16,6 +17,7 @@ class TrackingReportSheet extends Model
         'tracking_report_sheet_start_date',
         'tracking_report_sheet_end_date',
         'tracking_report_sheet_description',
+        'tracking_report_sheet_image',
         'reportsheet_id',
         'user_id'
     ];

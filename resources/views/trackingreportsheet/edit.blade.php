@@ -7,8 +7,9 @@
             <div class="col-md-1"><i class="fa fa-close chatter-close"></i></div>
         </div>
 
-        {{ Form::open(['id' => 'formTrackingReportSheet', 'enctype' => 'multipart/form-data','data-url' => url('TrackingReportSheet')]) }}
+        {{ Form::open(['id' => 'formTrackingReportSheet', 'enctype' => 'multipart/form-data','method' => 'PUT', 'data-url' => url('TrackingReportSheet')]) }}
 
+        {!! Form::hidden('idTracking', null, ['id'=>'idTracking']) !!}
         {!! Form::hidden('reportsheet_id', null, ['id'=>'reportsheet_id']) !!}
 
         <div class="row">
@@ -68,7 +69,7 @@
         </div>
 
         <div class="text-right">
-            {{ Form::submit('Guardar', ['name' => 'action', 'class' => 'btn btn-create']) }}
+            {{ Form::submit('Actualizar', ['name' => 'action', 'class' => 'btn btn-create']) }}
             <button type="button" class="btn btn-secondary" id="cancel_discussion">Cancelar</button>
         </div>
 

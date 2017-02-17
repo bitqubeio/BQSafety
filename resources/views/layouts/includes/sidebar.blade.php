@@ -1,7 +1,7 @@
 <div class="sidebar-left">
     <nav role="navigation">
         <div class="sidebar-left-header">
-            <a href="{{ url('/') }}" class="nav-brand"><i class="fa fa-stumbleupon"></i>
+            <a href="{{ url('/home') }}" class="nav-brand"><i class="fa fa-stumbleupon"></i>
                 <span class="title">BQSafety</span>
             </a>
             <div class="close-sidebar">
@@ -30,15 +30,19 @@
             @permission('location-list')
             <li><a class="{{ Request::is('location*') ? 'active' : null }}" href="{{ url('/location') }}"><i class="fa fa-map-marker"></i> <span class="title">Ubicaciones</span></a></li>
             @endpermission
-            @permission('reportsheet-list')
+            @permission(['reportsheet-list','tracking-list'])
             <li>
-                <a class="{{ Request::is('reportsheets*') ? 'active' : null }}" href="#" data-toggle="collapse" data-target="#menu2" aria-expanded="false" aria-controls="menu2"><i class="fa fa-folder"></i> <span class="title">Reportes</span></a>
+                <a class="{{ Request::is('reportsheets*','trackingreportsheets*') ? 'active' : null }}" href="#" data-toggle="collapse" data-target="#menu2" aria-expanded="false" aria-controls="menu2"><i class="fa fa-folder"></i> <span class="title">Reportes</span></a>
                 <div class="sidsebar-left-dropdown">
                     <ul class="collapse" id="menu2">
+                        @permission('reportsheet-list')
                         <li><a href="{{ url('reportsheets')  }}"><i class="fa fa-file-text-o"></i> <span class="title">Reportes recientes</span></a></li>
-                        <li><a href="{{ url('pendingReportsheets')  }}"><i class="fa fa-file-text-o" style="color: #E34A2B"></i> <span class="title">Reportes pendientes</span></a></li>
-                        <li><a href="{{ url('processReportsheets')  }}"><i class="fa fa-file-text-o" style="color: #FFD84D"></i> <span class="title">Reportes en proceso</span></a></li>
-                        <li><a href="{{ url('gottenupReportsheets')  }}"><i class="fa fa-file-text-o" style="color: #39B38C"></i> <span class="title">Reportes levantados</span></a></li>
+                        @endpermission
+                        @permission('tracking-list')
+                        <li><a href="{{ url('trackingreportsheets/1')  }}"><i class="fa fa-file-text-o" style="color: #E34A2B"></i> <span class="title">Reportes pendientes</span></a></li>
+                        <li><a href="{{ url('trackingreportsheets/2')  }}"><i class="fa fa-file-text-o" style="color: #FFD84D"></i> <span class="title">Reportes en proceso</span></a></li>
+                        <li><a href="{{ url('trackingreportsheets/3')  }}"><i class="fa fa-file-text-o" style="color: #39B38C"></i> <span class="title">Reportes levantados</span></a></li>
+                        @endpermission
                     </ul>
                 </div>
             @endpermission

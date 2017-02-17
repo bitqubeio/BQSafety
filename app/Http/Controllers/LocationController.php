@@ -24,8 +24,8 @@ class LocationController extends Controller
         // return locations
         return Datatables::of($locations)
             ->addColumn('action', function ($location) {
-                // permission - edit
                 $edit = $delete = null;
+                // permission - edit
                 if (auth()->user()->can('location-edit')) {
                     $edit = '<a href="location/' . $location->id . '/edit" title="Editar"><i class="fa fa-pencil"></i></a>';
                 }

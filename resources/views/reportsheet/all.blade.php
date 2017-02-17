@@ -19,7 +19,7 @@
             <div class="row my-4">
                 <div class="col-lg-12">
                     <table class="table responsive table-bqsafety table-hover" id="grid-reportsheets"
-                           data-url="{{ url('location') }}">
+                           data-url="{{ url('reportsheets') }}">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -43,19 +43,22 @@
     @include('partials.modalQuestion')
     @endpermission
 
+    @permission('tracking-create')
     @include('trackingreportsheet.create')
+    @endpermission
 
 @endsection
 
 @section('javascript')
 
-    <!-- DataTables -->
+
+    @permission('tracking-create')
     {{ Html::script('bqsafety/js/tracking.js') }}
     {{ Html::script('bqsafety/js/alerts.js') }}
     {{ Html::script('bqsafety/js/toastr.js') }}
+    @endpermission
+    <!-- DataTables -->
     {{ Html::script('bqsafety/libs/datatables/js/dataTables.keyTable.js') }}
-
-    @permission(['reportsheet-create','reportsheet-edit','reportsheet-delete']){{ Html::script('bqsafety/js/toastr.js') }}@endpermission
 
     <script>
         $(document).ready(function () {
@@ -84,6 +87,7 @@
             });
         });
 
+        @permission('tracking-create')
         // datePicker
         $('.datepicker').datepicker({
             format: "dd/mm/yyyy",
@@ -99,5 +103,6 @@
             resetAll(formTrackingReportSheet);
             $('#new_discussion').slideUp();
         });
+        @endpermission
     </script>
 @endsection

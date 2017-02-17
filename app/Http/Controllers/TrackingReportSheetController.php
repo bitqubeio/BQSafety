@@ -6,30 +6,11 @@ use App\Reportsheet;
 use App\TrackingReportSheet;
 use App\Http\Requests\TrackingReportSheetCreateRequest;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use File;
+use Intervention\Image\Facades\Image;
 
 class TrackingReportSheetController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     public function store(TrackingReportSheetCreateRequest $request)
     {
         if ($request->ajax()) {
@@ -43,6 +24,20 @@ class TrackingReportSheetController extends Controller
             $tracking = new TrackingReportSheet($request->all());
             $tracking->tracking_report_sheet_start_date = Carbon::createFromFormat('d/m/Y', $request->input('tracking_report_sheet_start_date'))->format('Y-m-d');
             $tracking->tracking_report_sheet_end_date = Carbon::createFromFormat('d/m/Y', $request->input('tracking_report_sheet_end_date'))->format('Y-m-d');
+
+            // if exist image
+            if ($request->hasFile('tracking_report_sheet_image')) {
+                $image = $request->file('tracking_report_sheet_image');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                Image::make($image)->resize(200, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('/images/trackingreportsheets/thumbnail/' . $filename));
+                Image::make($image)->resize(700, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save(public_path('/images/trackingreportsheets/700px/' . $filename));
+                $tracking->tracking_report_sheet_image = $filename;
+            }
+
             $tracking->user_id = auth()->user()->id;
             $tracking->save();
 
@@ -57,48 +52,71 @@ class TrackingReportSheetController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $tracking = TrackingReportSheet::where('reportsheet_id', $id)
+            ->select(
+                'id',
+                'tracking_report_sheet_responsible',
+                'tracking_report_sheet_status',
+                'tracking_report_sheet_start_date',
+                'tracking_report_sheet_end_date',
+                'tracking_report_sheet_description',
+                'reportsheet_id'
+            )->get()
+            ->first();
+
+        return response()->json($tracking->toArray());
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(TrackingReportSheetCreateRequest $request, $id)
     {
-        //
-    }
+        // report sheet save
+        $reportID = $request->input('reportsheet_id');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $reportSheet = Reportsheet::find($reportID);
+
+        $reportSheet->reportsheet_status = $request->input('tracking_report_sheet_status');
+
+        $reportSheet->save();
+
+        // tracking save
+        $tracking = TrackingReportSheet::find($id);
+
+        $tracking_report_sheet_image = $tracking->tracking_report_sheet_image;
+
+        $tracking->fill($request->all());
+
+        $tracking->tracking_report_sheet_start_date = Carbon::createFromFormat('d/m/Y', $request->input('tracking_report_sheet_start_date'))->format('Y-m-d');
+        $tracking->tracking_report_sheet_end_date = Carbon::createFromFormat('d/m/Y', $request->input('tracking_report_sheet_end_date'))->format('Y-m-d');
+
+        // if exist image
+        if ($request->hasFile('tracking_report_sheet_image')) {
+            // delete
+            $pathToImage1 = public_path('/images/trackingreportsheets/thumbnail/' . $tracking_report_sheet_image);
+            $pathToImage2 = public_path('/images/trackingreportsheets/700px/' . $tracking_report_sheet_image);
+            File::delete($pathToImage1, $pathToImage2);
+            // update
+            $image = $request->file('tracking_report_sheet_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('/images/trackingreportsheets/thumbnail/' . $filename));
+            Image::make($image)->resize(700, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('/images/trackingreportsheets/700px/' . $filename));
+            $tracking->tracking_report_sheet_image = $filename;
+        }
+
+        $tracking->save();
+
+        // title for notification
+        $title = 'Reporte N° #' . $reportID;
+
+        // response
+        return response()->json([
+            'title' => $title,
+            'message' => '¡Actualizado correctamente!'
+        ]);
     }
 }
