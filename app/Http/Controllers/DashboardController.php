@@ -75,6 +75,7 @@ class DashboardController extends Controller
             ->where('user_id', auth()->user()->id)
             ->join('locations', 'locations.id', '=', 'reportsheets.location_id')
             ->select('reportsheets.id', 'location_name', 'reportsheet_description', 'reportsheet_status')
+            ->take(10)
             ->get();
 
         /*
