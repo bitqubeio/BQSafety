@@ -36,7 +36,19 @@
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="card">
                         <div class="card-block">
-                            <h4 class="card-title">Últimos reportes</h4>
+                            <div>
+                                <div class="text-center">
+                                    <img src="{{ url('/bqsafety/img/user.png') }}" alt="" style="width: 100px">
+                                    <h2 class="mt-3">¡Bienvenido(a), {{ Auth::user()->user_username }}!</h2>
+                                    @if(Auth::user()->user_status)
+                                        <p>"No hay trabajo tan urgente que no pueda ser ejecutado con seguridad". </p>
+                                    @else
+                                        <p>En breve el administrador del sistema validará su registro. </p>
+                                    @endif
+                                </div>
+                            </div>
+                            <hr>
+                            <h4 class="card-title">Tus últimos reportes</h4>
                             <table class="table table-sm">
                                 <thead>
                                 <tr>
