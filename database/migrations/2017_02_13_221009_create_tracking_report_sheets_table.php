@@ -21,7 +21,7 @@ class CreateTrackingReportSheetsTable extends Migration
             $table->date('tracking_report_sheet_end_date');
             $table->mediumText('tracking_report_sheet_description');
             $table->string('tracking_report_sheet_image')->default('default.png');
-            $table->integer('reportsheet_id')->unsigned();
+            $table->integer('reportsheet_id')->unsigned()->unique();
             $table->foreign('reportsheet_id')->references('id')->on('reportsheets');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
