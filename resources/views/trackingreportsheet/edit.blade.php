@@ -7,7 +7,7 @@
             <div class="col-md-1"><i class="fa fa-close chatter-close"></i></div>
         </div>
 
-        {{ Form::open(['id' => 'formTrackingReportSheet', 'enctype' => 'multipart/form-data','method' => 'PUT', 'data-url' => url('TrackingReportSheet')]) }}
+        {{ Form::open(['id' => 'formTrackingReportSheet', 'enctype' => 'multipart/form-data','method' => 'PATCH', 'data-url' => url('TrackingReportSheet')]) }}
 
         {!! Form::hidden('idTracking', null, ['id'=>'idTracking']) !!}
         {!! Form::hidden('reportsheet_id', null, ['id'=>'reportsheet_id']) !!}

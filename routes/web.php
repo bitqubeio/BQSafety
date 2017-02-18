@@ -163,9 +163,9 @@ Route::group(['middleware' => ['auth']], function () {
     // view tracking
     Route::get('trackingreportsheets/{type}', ['as' => 'trackingreportsheets.trackingReportSheets', 'uses' => 'ReportsheetController@trackingReportSheets', 'middleware' => ['permission:tracking-list']]);
     // create
-    Route::get('TrackingReportSheet/create', ['as' => 'TrackingReportSheet.create', 'uses' => 'TrackingReportSheetController@create', 'middleware' => ['permission:tracking-create']]);
+    //Route::get('TrackingReportSheet', ['as' => 'TrackingReportSheet.create', 'uses' => 'TrackingReportSheetController@create', 'middleware' => ['permission:tracking-create']]);
     // store
-    Route::post('TrackingReportSheet/create', ['as' => 'TrackingReportSheet.store', 'uses' => 'TrackingReportSheetController@store', 'middleware' => ['permission:tracking-create']]);
+    Route::post('TrackingReportSheet', ['as' => 'TrackingReportSheet.store', 'uses' => 'TrackingReportSheetController@store', 'middleware' => ['permission:tracking-create']]);
     // edit
     Route::get('TrackingReportSheet/{id}/edit', ['as' => 'TrackingReportSheet.edit', 'uses' => 'TrackingReportSheetController@edit', 'middleware' => ['permission:tracking-edit']]);
     // update

@@ -120,7 +120,7 @@ class ReportsheetController extends Controller
                 if (auth()->user()->can('tracking-edit')) {
                     $newControl = '<button value="' . $reportsheet->id . '" onclick="showTrackingInModal(this);"><i class="fa fa-pencil" aria-hidden="true" title="Seguimiento y Control"></i></button>';
                 }
-                return $newControl . ' <a href="reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
+                return $newControl . ' <a href="/reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
             })
             ->editColumn('reportsheet_status', function ($reportsheets) {
                 if ($reportsheets->reportsheet_status == 1) {

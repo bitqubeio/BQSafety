@@ -93,9 +93,12 @@ class TrackingReportSheetController extends Controller
         // if exist image
         if ($request->hasFile('tracking_report_sheet_image')) {
             // delete
-            $pathToImage1 = public_path('/images/trackingreportsheets/thumbnail/' . $tracking_report_sheet_image);
-            $pathToImage2 = public_path('/images/trackingreportsheets/700px/' . $tracking_report_sheet_image);
-            File::delete($pathToImage1, $pathToImage2);
+            if ($tracking_report_sheet_image != 'default.png') {
+                $pathToImage1 = public_path('/images/trackingreportsheets/thumbnail/' . $tracking_report_sheet_image);
+                $pathToImage2 = public_path('/images/trackingreportsheets/700px/' . $tracking_report_sheet_image);
+                File::delete($pathToImage1, $pathToImage2);
+            }
+
             // update
             $image = $request->file('tracking_report_sheet_image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
