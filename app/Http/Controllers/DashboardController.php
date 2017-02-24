@@ -102,23 +102,23 @@ class DashboardController extends Controller
         $pieChartjs = app()->chartjs
             ->name('pieChartjs')
             ->type('pie')
-            ->labels(['Accidente Seguridad', 'Accidente Ambiental', 'Incidente Seguridad', 'Incidente Ambiental', 'Acto Subestandar', 'Condición Subestandar'])
+            ->labels(['Accidente Seguridad', 'Incidente Seguridad', 'Acto Subestandar', 'Accidente Ambiental', 'Incidente Ambiental', 'Condición Subestandar'])
             ->datasets([
                 [
                     'backgroundColor' => [
-                        'rgba(226,86,104,0.9)',
-                        'rgba(104,226,86,0.9)',
-                        'rgba(207,86,226,0.9)',
-                        'rgba(226,207,86,0.9)',
-                        'rgba(138,86,226,0.9)',
-                        'rgba(226,137,86,0.9)'
+                        'rgba(226,86,104,0.8)',
+                        'rgba(207,86,226,0.8)',
+                        'rgba(138,86,226,0.8)',
+                        'rgba(104,226,86,0.8)',
+                        'rgba(226,207,86,0.8)',
+                        'rgba(226,137,86,0.8)'
                     ],
                     'hoverBackgroundColor' => [
                         'rgba(226,86,104,1)',
-                        'rgba(104,226,86,1)',
                         'rgba(207,86,226,1)',
-                        'rgba(226,207,86,1)',
                         'rgba(138,86,226,1)',
+                        'rgba(104,226,86,1)',
+                        'rgba(226,207,86,1)',
                         'rgba(226,137,86,1)'
                     ],
                     'data' => [$var1, $var2, $var3, $var4, $var5, $var6]

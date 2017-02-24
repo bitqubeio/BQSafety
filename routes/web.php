@@ -170,6 +170,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('TrackingReportSheet/{id}/edit', ['as' => 'TrackingReportSheet.edit', 'uses' => 'TrackingReportSheetController@edit', 'middleware' => ['permission:tracking-edit']]);
     // update
     Route::patch('TrackingReportSheet/{id}', ['as' => 'TrackingReportSheet.update', 'uses' => 'TrackingReportSheetController@update', 'middleware' => ['permission:tracking-edit']]);
+    // PDF download
+    Route::get('TrackingReportSheetPDFDownload/{id}', ['as' => 'TrackingReportSheetPDFDownload.pdfDownload', 'uses' => 'TrackingReportSheetController@pdfDownload', 'middleware' => ['permission:tracking-export-pdf']]);
 
 });
 

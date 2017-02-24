@@ -105,7 +105,7 @@
                                 <div class="form-group{{ $errors->has('reportsheet_image') ? ' has-danger' : '' }}  row">
                                     <label for="reportsheet_image" class="col-lg-2 col-form-label text-lg-right">Foto:</label>
                                     <div class="col-lg-10">
-                                        {!! Form::file('reportsheet_image',['id'=>'reportsheet_image','class'=>'filestyle','data-input'=>'false']) !!}
+                                        {!! Form::file('reportsheet_image',['id'=>'reportsheet_image','accept'=>'image/*','class'=>'filestyle','data-input'=>'false']) !!}
                                         @if ($errors->has('reportsheet_image'))
                                             <span class="form-control-feedback">{{ $errors->first('reportsheet_image') }}</span>
                                         @endif

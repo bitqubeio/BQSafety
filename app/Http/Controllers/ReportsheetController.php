@@ -102,12 +102,13 @@ class ReportsheetController extends Controller
                 'tracking_report_sheet_start_date',
                 'tracking_report_sheet_end_date',
                 'tracking_report_sheet_description',
+                'tracking_report_sheet_image',
+                'tracking_report_sheet_file',
                 'user_username',
                 'avatar',
                 'location_name',
                 'reportsheet_classification',
                 'reportsheet_description',
-                'reportsheet_image',
                 'reportsheet_status'
             ])
             ->get();
@@ -115,12 +116,15 @@ class ReportsheetController extends Controller
         // return
         return Datatables::of($reportsheets)
             ->addColumn('action', function ($reportsheet) {
-                $newControl = null;
+                $newControl = $pdf = null;
                 // editar seguimiento y control
                 if (auth()->user()->can('tracking-edit')) {
                     $newControl = '<button value="' . $reportsheet->id . '" onclick="showTrackingInModal(this);"><i class="fa fa-pencil" aria-hidden="true" title="Seguimiento y Control"></i></button>';
                 }
-                return $newControl . ' <a href="/reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
+                if (auth()->user()->can('tracking-export-pdf')) {
+                    $pdf = ' <a target="_blank" href="/TrackingReportSheetPDFDownload/' . $reportsheet->id . '" title="Ver"><i class="fa fa-file-pdf-o" style="color: red;"></i></a> ';
+                }
+                return $newControl . $pdf . ' <a href="/reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
             })
             ->editColumn('reportsheet_status', function ($reportsheets) {
                 if ($reportsheets->reportsheet_status == 1) {
@@ -170,10 +174,21 @@ class ReportsheetController extends Controller
             ->editColumn('tracking_report_sheet_description', function ($reportshet) {
                 return '<p class="small">' . str_limit($reportshet->tracking_report_sheet_description, 47) . '</p>';
             })
-            ->editColumn('reportsheet_image', function ($reportsheet) {
-                return '<div class="imageitem"><ul><li><img src="../images/reportsheets/thumbnail/' . $reportsheet->reportsheet_image . '"></li></ul></div>';
+            ->editColumn('tracking_report_sheet_image', function ($reportsheet) {
+                $image = null;
+                if ($reportsheet->tracking_report_sheet_image) {
+                    $image = '<div class="imageitem"><ul><li><img src="/images/trackingreportsheets/thumbnail/' . $reportsheet->tracking_report_sheet_image . '"></li></ul></div>';
+                }
+                return $image;
             })
-            ->rawColumns(['action', 'reportsheet_status', 'user_username', 'reportsheet_description', 'reportsheet_classification', 'tracking_report_sheet_responsible', 'tracking_report_sheet_description', 'reportsheet_image'])
+            ->editColumn('tracking_report_sheet_file', function ($reportsheet) {
+                $file = '<small>no existe</small>';
+                if ($reportsheet->tracking_report_sheet_file) {
+                    $file = '<a target="_blank" href="/files/trackingreportsheets/' . $reportsheet->tracking_report_sheet_file . '"><i class="fa fa-paperclip"></i><small>' . $reportsheet->tracking_report_sheet_file . '</small></a>';
+                }
+                return $file;
+            })
+            ->rawColumns(['action', 'reportsheet_status', 'user_username', 'reportsheet_description', 'reportsheet_classification', 'tracking_report_sheet_responsible', 'tracking_report_sheet_description', 'tracking_report_sheet_image', 'tracking_report_sheet_file'])
             ->make(true);
     }
 

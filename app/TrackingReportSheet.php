@@ -18,6 +18,7 @@ class TrackingReportSheet extends Model
         'tracking_report_sheet_end_date',
         'tracking_report_sheet_description',
         'tracking_report_sheet_image',
+        'tracking_report_sheet_file',
         'reportsheet_id',
         'user_id'
     ];

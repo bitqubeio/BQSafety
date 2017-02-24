@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Reportsheet;
 use App\TrackingReportSheet;
 use App\Http\Requests\TrackingReportSheetCreateRequest;
+use PDF;
 use Carbon\Carbon;
 use File;
 use Intervention\Image\Facades\Image;
@@ -36,6 +37,14 @@ class TrackingReportSheetController extends Controller
                     $constraint->aspectRatio();
                 })->save(public_path('/images/trackingreportsheets/700px/' . $filename));
                 $tracking->tracking_report_sheet_image = $filename;
+            }
+
+            // if exist file pdf
+            if ($request->hasFile('tracking_report_sheet_file')) {
+                $file = $request->file('tracking_report_sheet_file');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('/files/trackingreportsheets/'), $filename);
+                $tracking->tracking_report_sheet_file = $filename;
             }
 
             $tracking->user_id = auth()->user()->id;
@@ -121,5 +130,21 @@ class TrackingReportSheetController extends Controller
             'title' => $title,
             'message' => '¡Actualizado correctamente!'
         ]);
+    }
+
+    public function pdfDownload($id)
+    {
+        // find
+        $racs = Reportsheet::findOrFail($id);
+
+        $tracking = TrackingReportSheet::where('reportsheet_id', $id)->get()->first();
+
+        //dd($tracking);
+
+        //pdf
+        $pdf = PDF::loadView('trackingreportsheet.pdf', compact('racs', 'tracking'));
+
+        // show in windows
+        return $pdf->setPaper('a4', 'portrait')->stream('Seguimiento_RACS_' . $id . '.pdf');
     }
 }

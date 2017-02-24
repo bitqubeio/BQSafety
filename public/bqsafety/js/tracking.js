@@ -14,9 +14,11 @@ function showWindowControl(btn) {
 function view(option) {
     if (option == 1 || option == 2) {
         $('#field_tracking_report_sheet_image').hide();
+        $('#field_tracking_report_sheet_file').hide();
     }
     if (option == 3) {
         $('#field_tracking_report_sheet_image').show();
+        $('#field_tracking_report_sheet_file').show();
     }
 }
 

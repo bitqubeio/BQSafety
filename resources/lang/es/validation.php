@@ -172,6 +172,7 @@ return [
         'tracking_report_sheet_end_date' => 'fecha límite',
         'tracking_report_sheet_description' => 'descripción',
         'tracking_report_sheet_image' => 'foto',
+        'tracking_report_sheet_file' => 'documento',
 
         'display_name' => 'nombre para mostrar',
         'permission' => 'permiso',

@@ -43,7 +43,10 @@
                             <th>Reporte</th>
                             <th>Responsable</th>
                             <th>Descripción</th>
+                            @if($type == 3)
                             <th>Foto</th>
+                            <th>Documento</th>
+                            @endif
                             <th>Accion</th>
                         </tr>
                         </thead>
@@ -93,7 +96,10 @@
                         sClass: 'text-center'
                     },
                     {data: 'tracking_report_sheet_description', name: 'tracking_report_sheet_description'},
-                    {data: 'reportsheet_image', name: 'reportsheet_image', sClass: 'text-center'},
+                        @if($type == 3)
+                    {data: 'tracking_report_sheet_image', name: 'tracking_report_sheet_image', sClass: 'text-center'},
+                    {data: 'tracking_report_sheet_file', name: 'tracking_report_sheet_file', sClass: 'text-center'},
+                        @endif
                     {data: 'action', name: 'action', sClass: 'actions text-center', orderable: false, searchable: false}
                 ],
                 "language": {
