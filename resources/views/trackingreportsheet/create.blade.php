@@ -69,7 +69,7 @@
                 <div id="field_tracking_report_sheet_file" class="form-group" style="display: none">
                     <label for="tracking_report_sheet_file" class="form-control-label">Documento:</label>
                     <span class="text-danger">*</span>
-                    {!! Form::file('tracking_report_sheet_file',['id'=>'tracking_report_sheet_file','accept'=>'application/pdf','class'=>'filestyle','data-input'=>'false']) !!}
+                    {!! Form::file('tracking_report_sheet_file',['id'=>'tracking_report_sheet_file','accept'=>'application/pdf','class'=>'filestyle','data-input'=>'false','data-iconName'=>'fa fa-paperclip','data-buttonText'=>'Subir documento']) !!}
                     <div class="form-control-feedback"></div>
                 </div>
             </div>

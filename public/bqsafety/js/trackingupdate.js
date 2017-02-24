@@ -32,6 +32,7 @@ function showTrackingInModal(btn) {
 
         if (res.tracking_report_sheet_status == 3) {
             $('#field_tracking_report_sheet_image').show();
+            $('#field_tracking_report_sheet_file').show();
         }
 
         var date1 = formatDate(res.tracking_report_sheet_start_date);

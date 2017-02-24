@@ -110,7 +110,7 @@
 					this.$elementFilestyle.find(':text').remove();
 					var files = this.pushNameFiles();
 					if (files.length > 0 && this.options.badge) {
-						this.$elementFilestyle.find('label').append(' <span class="badge badge-default">' + files.length + '</span>');
+						this.$elementFilestyle.find('label').append(' <span class="badge badge-primary">' + files.length + '</span>');
 					}
 					this.$elementFilestyle.find('.group-span-filestyle').removeClass('input-group-btn');
 				}
@@ -264,7 +264,7 @@
 
 				if (_self.options.input == false && _self.options.badge) {
 					if (_self.$elementFilestyle.find('.badge').length == 0) {
-						_self.$elementFilestyle.find('label').append(' <span class="badge badge-default">' + files.length + '</span>');
+						_self.$elementFilestyle.find('label').append(' <span class="badge badge-primary">' + files.length + '</span>');
 					} else if (files.length == 0) {
 						_self.$elementFilestyle.find('.badge').remove();
 					} else {

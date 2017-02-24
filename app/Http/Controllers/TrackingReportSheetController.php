@@ -93,6 +93,7 @@ class TrackingReportSheetController extends Controller
         $tracking = TrackingReportSheet::find($id);
 
         $tracking_report_sheet_image = $tracking->tracking_report_sheet_image;
+        $tracking_report_sheet_file = $tracking->tracking_report_sheet_file;
 
         $tracking->fill($request->all());
 
@@ -119,6 +120,20 @@ class TrackingReportSheetController extends Controller
             })->save(public_path('/images/trackingreportsheets/700px/' . $filename));
             $tracking->tracking_report_sheet_image = $filename;
         }
+
+        // if exist pdf
+        if ($request->hasFile('tracking_report_sheet_file')) {
+            // delete
+            $pathOfFile = public_path('/files/trackingreportsheets/' . $tracking_report_sheet_file);
+            File::delete($pathOfFile);
+
+            // update file
+            $file = $request->file('tracking_report_sheet_file');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('/files/trackingreportsheets/'), $filename);
+            $tracking->tracking_report_sheet_file = $filename;
+        }
+
 
         $tracking->save();
 
