@@ -27,7 +27,7 @@
                     <td valign="middle" align="center" bgcolor="#F2F2F2">
                         <table border="0" width="100%">
                             <tr>
-                                <td align="left" width="25%"><img src="{{ url('bqsafety/img/calcesur.png') }}" width="35"></td>
+                                <td align="left" width="25%"><img src="bqsafety/img/calcesur.png" width="35"></td>
                                 <td align="center" width="50%"><b>HOJA DE REPORTE</b></td>
                                 <td align="right" width="25%">&nbsp;</td>
                             </tr>
@@ -196,7 +196,7 @@
                     <td valign="middle" align="center" bgcolor="#F2F2F2">
                         <table border="0" width="100%">
                             <tr>
-                                <td align="left" width="25%"><img src="{{ url('bqsafety/img/calcesur.png') }}" width="35"></td>
+                                <td align="left" width="25%"><img src="bqsafety/img/calcesur.png" width="35"></td>
                                 <td align="center" width="50%"><b>HOJA DE REPORTE</b></td>
                                 <td align="right" width="25%">&nbsp;</td>
                             </tr>
@@ -302,8 +302,8 @@
                 </tr>
                 <tr>
                     <td bgcolor="#FFFFFF" align="center" style="vertical-align: middle;height:244px;">
-                        <a target="_blank" href="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}">
-                            <img style="width: 280px; max-height: 200px;border: 1px solid black" src="{{ url('/images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}">
+                        <a target="_blank" href="{{ url('images/reportsheets/700px/'.$reportsheet->reportsheet_image) }}">
+                            <img style="width: 280px; max-height: 200px;border: 1px solid black" src="images/reportsheets/700px/{{  $reportsheet->reportsheet_image }}">
                         </a>
                     </td>
                 </tr>

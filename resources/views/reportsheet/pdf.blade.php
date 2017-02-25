@@ -23,7 +23,7 @@
         <td valign="middle" align="center" bgcolor="#F2F2F2">
             <table border="0" width="100%">
                 <tr>
-                    <td align="left" width="25%"><img src="{{ url('bqsafety/img/calcesur.png') }}" width="35"></td>
+                    <td align="left" width="25%"><img src="bqsafety/img/calcesur.png" width="35"></td>
                     <td align="center" width="50%"><b>HOJA DE REPORTE</b></td>
                     <td align="right" width="25%">&nbsp;</td>
                 </tr>

@@ -101,9 +101,9 @@
             <tr>
                 <td class="seccion">FOTO REPORTE @if($racs->reportsheet_status == 3)/<br> FOTO LEVANTADO @endif</td>
                 <td colspan="3">
-                    <img src="{{ url('/images/reportsheets/700px/'.$racs->reportsheet_image) }}" class="imag">
+                    <img src="images/reportsheets/700px/{{ $racs->reportsheet_image }}" class="imag">
                     @if($racs->reportsheet_status == 3)
-                    <img src="{{ url('/images/trackingreportsheets/700px/'.$tracking->tracking_report_sheet_image) }}" class="imag">
+                    <img src="images/trackingreportsheets/700px/{{  $tracking->tracking_report_sheet_image }}" class="imag">
                     @endif
                     <div class="ajustar"></div>
                 </td>
