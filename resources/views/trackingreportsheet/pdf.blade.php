@@ -6,11 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="author" content="BQSafety">
-    <meta name="version" content="Enero 19 2017 v1.0">
+    <meta name="version" content="{{ Date::now() }}">
 
-
-    <title>SEGUIMIENTO RACS - N° 10 | BQSafety</title>
-    
+    <title>SEGUIMIENTO RACS - N° {{ $racs->id }} | BQSafety</title>
 
     <link href="css/pdf.css" rel="stylesheet" type="text/css" />
 
@@ -26,7 +24,7 @@
                     <br> Seguridad Integral
                     <br> Km 11 Panamericana Sur Juliaca – Puno; Caracoto, Perú
                     <br> Tel 051-328544 anexo 4636 | RPM *200056</div>
-            
+
             </div>
             <div class="ajustar"></div>
         </div>
