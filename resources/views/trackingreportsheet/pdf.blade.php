@@ -101,8 +101,14 @@
                 <td colspan="3" style="text-align:justify;">{{ $racs->reportsheet_correctiveaction }}</td>
             </tr>
             <tr>
-                <td class="seccion">FOTO</td>
-                <td colspan="3"><img src="{{ url('/images/reportsheets/700px/'.$racs->reportsheet_image) }}" class="imag"></td>
+                <td class="seccion">FOTO REPORTE @if($racs->reportsheet_status == 3)/<br> FOTO LEVANTADO @endif</td>
+                <td colspan="3">
+                    <img src="{{ url('/images/reportsheets/700px/'.$racs->reportsheet_image) }}" class="imag">
+                    @if($racs->reportsheet_status == 3)
+                    <img src="{{ url('/images/trackingreportsheets/700px/'.$tracking->tracking_report_sheet_image) }}" class="imag">
+                    @endif
+                    <div class="ajustar"></div>
+                </td>
             </tr>
             <tr>
                 <td colspan="4" class="titulo">SEGUIMIENTO Y CONTROL</td>

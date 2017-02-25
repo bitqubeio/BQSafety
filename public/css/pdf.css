@@ -53,8 +53,11 @@ td {
     font-size: 12.5px;
 }
 .tabla tbody .imag{
-    height: 200px;
-    max-width: 550px;
+    max-width: 220px;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    max-height: 200px;
 }
 .row {
     width: 100%;
