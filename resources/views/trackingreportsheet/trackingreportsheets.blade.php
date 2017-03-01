@@ -25,7 +25,9 @@
                             @endif
                         </h1>
                         <div class="col-lg-6 text-right">
-                            <!-- buttons -->
+                            @permission('tracking-export-excel')
+                            <a href="{{ url('TrackingReportSheetEXCELDownload/'.$type) }}" class="btn btn-success btn-sm"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Exportar a Excel</a>
+                            @endpermission
                         </div>
                     </div>
                 </div>

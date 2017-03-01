@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Reportsheet;
 use App\TrackingReportSheet;
 use App\Http\Requests\TrackingReportSheetCreateRequest;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use Carbon\Carbon;
 use File;
 use Intervention\Image\Facades\Image;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class TrackingReportSheetController extends Controller
 {
@@ -161,5 +164,79 @@ class TrackingReportSheetController extends Controller
 
         // show in windows
         return $pdf->setPaper('a4', 'portrait')->stream('Seguimiento_RACS_' . $id . '.pdf');
+    }
+
+    public function excelDownload($type)
+    {
+        // title doc excel
+        switch ($type) {
+            case 1:
+                $typeTracking = 'PENDIENTES';
+                break;
+            case 2:
+                $typeTracking = 'EN PROCESO';
+                break;
+            case 3:
+                $typeTracking = 'LEVANTADOS';
+                break;
+
+        }
+
+        // create archive excel
+        Excel::create('Seguimiento_RACS_' . $typeTracking . '-' . date('d-m-Y__h_i_A'), function ($excel) use ($type, $typeTracking) {
+
+            // Set the title
+            $excel->setTitle('BQSafety');
+
+            // Chain the setters
+            $excel->setCreator('BQSafety')
+                ->setCompany('BitQube.io - http://www.bitqube.io');
+
+            // Call them separately
+            $excel->setDescription('Somos una empresa dedicada a crear sistemas web para la necesidad de otras empresas, así ayudarlos a optimizar su papeleo y gestión de sus productos o servicios.');
+
+
+            $excel->sheet($typeTracking, function ($sheet) use ($type) {
+
+                // query doc excel
+                $trackingReportSheets = TrackingReportSheet::join('reportsheets', 'reportsheets.id', '=', 'tracking_report_sheets.reportsheet_id')
+                    ->join('locations', 'locations.id', '=', 'reportsheets.location_id')
+                    ->join('users', 'users.id', '=', 'reportsheets.user_id')
+                    ->join('companies', 'companies.id', '=', 'users.company_id')
+                    ->select(
+                        'reportsheet_id',
+                        'tracking_report_sheets.created_at',
+                        'location_name',
+                        'reportsheet_classification',
+                        'reportsheet_description',
+                        DB::raw('CONCAT(user_lastnames, ", ",user_names) AS names'),
+                        'company_name',
+                        'user_job',
+                        'user_area',
+                        'reportsheet_correctiveaction',
+                        'tracking_report_sheet_status',
+                        'tracking_report_sheet_responsible',
+                        'tracking_report_sheet_start_date',
+                        'tracking_report_sheet_end_date',
+                        'tracking_report_sheet_description'
+                    )
+                    ->where('tracking_report_sheet_status', $type)
+                    ->orderBy('created_at', 'ASC')
+                    ->get();
+
+                // Font family
+                $sheet->setStyle(array(
+                    'font' => array(
+                        'name' => 'Arial',
+                        'size' => 9
+                    )
+                ));
+
+                // load view for archive excel
+                $sheet->loadView('trackingreportsheet.excel', compact('trackingReportSheets'));
+
+            });
+        })->download('xlsx');
+
     }
 }
