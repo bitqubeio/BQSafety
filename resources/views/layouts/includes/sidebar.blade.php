@@ -1,7 +1,8 @@
 <div class="sidebar-left">
     <nav role="navigation">
         <div class="sidebar-left-header">
-            <a href="{{ url('/home') }}" class="nav-brand"><i class="fa fa-stumbleupon"></i>
+            <a href="{{ url('/home') }}" class="nav-brand">
+                <img style="width: 20px; margin-left: 7px;" src="{{ url('bqsafety/img/logo/logo.png') }}" alt="">
                 <span class="title">BQSafety</span>
             </a>
             <div class="close-sidebar">

@@ -9,7 +9,7 @@
                 </a>
                 <div class="card">
                     <div class="card-block">
-                        <a href="/" style="display: block;width: 51px;margin: 0 auto;"><img src="bqsafety/img/logo/bqsafety.png" alt="logo"></a>
+                        <a href="/" style="display: block;width: 90px;margin: 0 auto;"><img src="bqsafety/img/logo/bqsafety.png" alt="logo"></a>
                         <p class="text-center">Accede a <b>BQSafety</b></p>
                         <hr>
 

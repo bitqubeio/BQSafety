@@ -22,7 +22,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-    <title>BQSafety</title>
+    <title>BQSafety — SEGURIDAD INDUSTRIAL</title>
     <!-- Favicon -->
     {{ Html::favicon('bqsafety/img/logo/bqsafety.png') }}
     {{ Html::style('bqsafety/libs/bootstrap/css/bootstrap.css') }}

@@ -27,10 +27,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Favicon -->
     {{ Html::favicon('bqsafety/img/logo/bqsafety.png') }}
-
     <!-- Styles -->
     {{ Html::style('bqsafety/libs/bootstrap/css/bootstrap.css') }}
     {{ Html::style('bqsafety/css/main.css') }}
