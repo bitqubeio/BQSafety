@@ -35,7 +35,7 @@
                 <div id="field_tracking_report_sheet_start_date" class="form-group">
                     <label for="tracking_report_sheet_start_date" class="form-control-label">Fecha Inicio:</label>
                     <span class="text-danger">*</span>
-                    {!! Form::text('tracking_report_sheet_start_date', null, ['id'=>'tracking_report_sheet_start_date', 'class'=>'form-control datepicker', 'placeholder'=>'Fecha Inicio', 'autocomplete'=>'off']) !!}
+                    {!! Form::text('tracking_report_sheet_start_date', null, ['id'=>'tracking_report_sheet_start_date', 'class'=>'form-control datetimepicker', 'placeholder'=>'Fecha Inicio', 'autocomplete'=>'off']) !!}
                     <div class="form-control-feedback"></div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <div id="field_tracking_report_sheet_end_date" class="form-group">
                     <label for="tracking_report_sheet_end_date" class="form-control-label">Fecha Límite:</label>
                     <span class="text-danger">*</span>
-                    {!! Form::text('tracking_report_sheet_end_date', null, ['id'=>'tracking_report_sheet_end_date', 'class'=>'form-control datepicker', 'placeholder'=>'Fecha Límite', 'autocomplete'=>'off']) !!}
+                    {!! Form::text('tracking_report_sheet_end_date', null, ['id'=>'tracking_report_sheet_end_date', 'class'=>'form-control datetimepicker', 'placeholder'=>'Fecha Límite', 'autocomplete'=>'off']) !!}
                     <div class="form-control-feedback"></div>
                 </div>
             </div>

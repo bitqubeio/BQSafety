@@ -18,17 +18,5 @@ $(function () {
         $("#main").removeClass("expanded");
         $(".sidebar-button").find("i").toggleClass('fa-navicon fa-arrow-left');
     });
-
-    /*-------------------------------------
-     Datepicker
-     --------------------------------------*/
-    var nowDate = new Date();
-    var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
-    $('.datepicker').datepicker({
-        language: "es",
-        startDate: today,
-        format: 'dd/mm/yyyy',
-        autoclose: true
-    });
 });
 

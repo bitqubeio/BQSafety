@@ -11,7 +11,6 @@ use PDF;
 use Carbon\Carbon;
 use File;
 use Intervention\Image\Facades\Image;
-use PhpParser\Node\Expr\AssignOp\Concat;
 
 class TrackingReportSheetController extends Controller
 {
@@ -205,7 +204,7 @@ class TrackingReportSheetController extends Controller
                     ->join('companies', 'companies.id', '=', 'users.company_id')
                     ->select(
                         'reportsheet_id',
-                        'tracking_report_sheets.created_at',
+                        'reportsheet_datetime',
                         'location_name',
                         'reportsheet_classification',
                         'reportsheet_description',
@@ -221,8 +220,10 @@ class TrackingReportSheetController extends Controller
                         'tracking_report_sheet_description'
                     )
                     ->where('tracking_report_sheet_status', $type)
-                    ->orderBy('created_at', 'ASC')
+                    ->orderBy('reportsheet_datetime', 'ASC')
                     ->get();
+
+                //dd($trackingReportSheets);
 
                 // Font family
                 $sheet->setStyle(array(

@@ -29,7 +29,7 @@
     <title>@yield('title','Inicio') — {{ config('app.name', 'BITQUBE') }}</title>
 
     <!-- Favicon -->
-    {{ Html::favicon('bqsafety/img/user.png') }}
+    {{ Html::favicon('bqsafety/img/logo/bqsafety.png') }}
 
     <!-- Libs Styles -->
     {{ Html::style('bqsafety/libs/bootstrap/css/bootstrap.css') }}
@@ -42,9 +42,8 @@
     {{ Html::style('bqsafety/libs/datatables/css/jquery.dataTable.bootstrap4.css') }}
     {{ Html::style('https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css') }}
 
-    <!-- Datepicker Files -->
-    {{ Html::style('bqsafety/libs/datePicker/css/bootstrap-datepicker3.css') }}
-    {{ Html::style('bqsafety/libs/datePicker/css/bootstrap-datepicker.standalone.css') }}
+    <!-- Datetimepicker Files -->
+    {{ Html::style('bqsafety/libs/datetimepicker/jquery.datetimepicker.min.css') }}
 
     <!-- Global style -->
     {{ Html::style('bqsafety/css/main.css') }}
@@ -85,10 +84,8 @@
     {{ Html::script('bqsafety/libs/bootstrap/js/bootstrap.min.js') }}
     {{ Html::script('bqsafety/js/bootstrap-filestyle.js') }}
 
-    <!-- Datepicker Files -->
-    {{ Html::script('bqsafety/libs/datePicker/js/bootstrap-datepicker.js') }}
-    <!-- Language -->
-    {{ Html::script('bqsafety/libs/datePicker/locales/bootstrap-datepicker.es.min.js') }}
+    <!-- Datetimepicker Files -->
+    {{ Html::script('bqsafety/libs/datetimepicker/jquery.datetimepicker.full.min.js') }}
 
     <!-- Charts -->
     {{ Html::script('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js') }}

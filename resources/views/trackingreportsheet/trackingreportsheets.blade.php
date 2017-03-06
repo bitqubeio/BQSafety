@@ -92,11 +92,7 @@
                     {data: 'user_username', name: 'user_username', sClass: 'text-center'},
                     {data: 'reportsheet_classification', name: 'reportsheet_classification'},
                     {data: 'reportsheet_description', name: 'reportsheet_description'},
-                    {
-                        data: 'tracking_report_sheet_responsible',
-                        name: 'tracking_report_sheet_responsible',
-                        sClass: 'text-center'
-                    },
+                    {data: 'tracking_report_sheet_responsible', name: 'tracking_report_sheet_responsible', sClass: 'text-center'},
                     {data: 'tracking_report_sheet_description', name: 'tracking_report_sheet_description'},
                         @if($type == 3)
                     {data: 'tracking_report_sheet_image', name: 'tracking_report_sheet_image', sClass: 'text-center'},
@@ -112,14 +108,12 @@
             });
         });
         @permission('tracking-edit')
-        // datePicker
-        $('.datepicker').datepicker({
-            format: "dd/mm/yyyy",
-            todayBtn: 'linked',
-            language: "es",
-            orientation: "bottom auto",
-            autoclose: true,
-            todayHighlight: true
+        // datetimepicker
+        $.datetimepicker.setLocale('es');
+
+        $('.datetimepicker').datetimepicker({
+            timepicker:false,
+            format: 'd/m/Y'
         });
 
         // hide window create

@@ -161,6 +161,7 @@ return [
         'company_description' => 'descripción',
 
         'location_id' => 'lugar',
+        'reportsheet_datetime' => 'fecha y hora',
         'reportsheet_classification' => 'clasificación',
         'reportsheet_description' => 'descripción del reporte',
         'reportsheet_correctiveaction' => 'acción correctiva',

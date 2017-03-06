@@ -25,6 +25,7 @@ class ReportsheetCreateRequest extends FormRequest
     {
         return [
             'location_id' => 'required',
+            'reportsheet_datetime' => 'required|date_format:d/m/Y H:i',
             'reportsheet_classification' => 'required',
             'reportsheet_description' => 'required|max:500',
             'reportsheet_correctiveaction' => 'max:500',

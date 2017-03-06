@@ -12,6 +12,7 @@ class Reportsheet extends Model
 
     protected $fillable = [
         'location_id',
+        'reportsheet_datetime',
         'reportsheet_classification',
         'reportsheet_description',
         'reportsheet_correctiveaction',

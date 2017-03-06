@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Location;
+use Carbon\Carbon;
 use PDF;
 use App\Reportsheet;
 use App\Http\Requests\ReportsheetCreateRequest;
@@ -21,6 +22,7 @@ class ReportsheetController extends Controller
             ->join('locations', 'locations.id', '=', 'reportsheets.location_id')
             ->select([
                 'reportsheets.id',
+                'reportsheets.reportsheet_datetime',
                 'reportsheets.created_at',
                 'user_username',
                 'avatar',
@@ -42,8 +44,8 @@ class ReportsheetController extends Controller
                 }
                 return $newControl . ' <a href="reportsheets/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
             })
-            ->editColumn('created_at', function ($reportsheet) {
-                return '<span class="badge badge-progress badge-md"><i class="fa fa-clock-o"></i> ' . $reportsheet->created_at->toFormattedDateString() . '</span>';
+            ->editColumn('reportsheet_datetime', function ($reportsheet) {
+                return '<span class="badge badge-progress badge-md"><i class="fa fa-clock-o"></i> ' . date('d/m/Y - H:i', strtotime($reportsheet->reportsheet_datetime)) . '</span>';
             })
             ->editColumn('user_username', function ($reportsheet) {
                 return '<span class="small">' . $reportsheet->user_username . '</span><div class="imageuser"><ul><li><img src="images/avatars/' . $reportsheet->avatar . '"> </li></ul></div>';
@@ -84,7 +86,7 @@ class ReportsheetController extends Controller
             ->editColumn('reportsheet_image', function ($reportsheet) {
                 return '<div class="imageitem"><ul><li><img src="images/reportsheets/thumbnail/' . $reportsheet->reportsheet_image . '"></li></ul></div>';
             })
-            ->rawColumns(['action', 'created_at', 'user_username', 'location_name', 'reportsheet_classification', 'reportsheet_description', 'reportsheet_correctiveaction', 'reportsheet_image'])
+            ->rawColumns(['action', 'reportsheet_datetime', 'user_username', 'location_name', 'reportsheet_classification', 'reportsheet_description', 'reportsheet_correctiveaction', 'reportsheet_image'])
             ->make(true);
     }
 
@@ -199,6 +201,7 @@ class ReportsheetController extends Controller
             ->join('locations', 'locations.id', '=', 'reportsheets.location_id')
             ->select([
                 'reportsheets.id',
+                'reportsheets.reportsheet_datetime',
                 'reportsheets.created_at',
                 'user_username',
                 'avatar',
@@ -217,8 +220,8 @@ class ReportsheetController extends Controller
             ->addColumn('action', function ($reportsheet) {
                 return '<a href="reportsheet/' . $reportsheet->id . '" title="Ver"><i class="fa fa-eye"></i></a>';
             })
-            ->editColumn('created_at', function ($reportsheet) {
-                return '<span class="badge badge-success badge-md"><i class="fa fa-clock-o"></i> ' . $reportsheet->created_at->toFormattedDateString() . '</span>';
+            ->editColumn('reportsheet_datetime', function ($reportsheet) {
+                return '<span class="badge badge-success badge-md"><i class="fa fa-clock-o"></i> ' . date('d/m/Y - H:i', strtotime($reportsheet->reportsheet_datetime)) . '</span>';
             })
             ->editColumn('user_username', function ($reportsheet) {
                 return '<span class="small">' . $reportsheet->user_username . '</span><div class="imageuser"><ul><li><img src="images/avatars/' . $reportsheet->avatar . '"> </li></ul></div>';
@@ -267,7 +270,7 @@ class ReportsheetController extends Controller
             ->editColumn('reportsheet_image', function ($reportsheet) {
                 return '<div class="imageitem"><ul><li><img src="images/reportsheets/thumbnail/' . $reportsheet->reportsheet_image . '"></li></ul></div>';
             })
-            ->rawColumns(['action', 'created_at', 'user_username', 'location_name', 'reportsheet_classification', 'reportsheet_description', 'reportsheet_correctiveaction', 'reportsheet_status', 'reportsheet_image'])
+            ->rawColumns(['action', 'reportsheet_datetime', 'user_username', 'location_name', 'reportsheet_classification', 'reportsheet_description', 'reportsheet_correctiveaction', 'reportsheet_status', 'reportsheet_image'])
             ->make(true);
     }
 
@@ -309,6 +312,8 @@ class ReportsheetController extends Controller
 
         // object report sheet
         $reportsheet = new Reportsheet($request->all());
+
+        $reportsheet->reportsheet_datetime = Carbon::createFromFormat('d/m/Y H:i', $request->input('reportsheet_datetime'))->format('Y-m-d h:i');
 
         // checkboxes data to db
         $reportsheet->reportsheet_classification = $checkboxes;

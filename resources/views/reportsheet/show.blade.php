@@ -59,6 +59,10 @@
                                     <td>{{ $reportsheet->user->user_area }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Fecha y Hora</td>
+                                    <td>{{ date('d/m/Y - H:i', strtotime($reportsheet->reportsheet_datetime)) }}</td>
+                                </tr>
+                                <tr>
                                     <td>Ubicación</td>
                                     <td>{{ $reportsheet->location->location_name }}</td>
                                 </tr>

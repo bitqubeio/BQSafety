@@ -14,9 +14,11 @@ function showWindowControl(btn) {
 function view(option) {
     if (option == 1 || option == 2) {
         $('#field_tracking_report_sheet_image').hide();
+        $('#field_tracking_report_sheet_file').hide();
     }
     if (option == 3) {
         $('#field_tracking_report_sheet_image').show();
+        $('#field_tracking_report_sheet_file').show();
     }
 }
 
@@ -38,8 +40,8 @@ function showTrackingInModal(btn) {
         var date1 = formatDate(res.tracking_report_sheet_start_date);
         var date2 = formatDate(res.tracking_report_sheet_end_date);
 
-        $('#tracking_report_sheet_start_date').datepicker('update', date1);
-        $('#tracking_report_sheet_end_date').datepicker('update', date2);
+        $('#tracking_report_sheet_start_date').val(date1);
+        $('#tracking_report_sheet_end_date').val(date2);
         $("#tracking_report_sheet_description").val(res.tracking_report_sheet_description);
     });
 }

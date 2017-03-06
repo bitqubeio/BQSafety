@@ -25,7 +25,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Creado</th>
+                            <th>Fecha y Hora</th>
                             <th>Reportante</th>
                             <th>Ubicación</th>
                             <th>Clasificación</th>
@@ -65,7 +65,7 @@
                 "ajax": "{{ url('api/reportsheets') }}",
                 "columns": [
                     {data: 'id', name: 'id', sClass: 'text-center font-weight-bold'},
-                    {data: 'created_at', name: 'created_at', sClass: 'text-center'},
+                    {data: 'reportsheet_datetime', name: 'reportsheet_datetime', sClass: 'text-center'},
                     {data: 'user_username', name: 'user_username', sClass: 'text-center'},
                     {data: 'location_name', name: 'location_name'},
                     {data: 'reportsheet_classification', name: 'reportsheet_classification'},

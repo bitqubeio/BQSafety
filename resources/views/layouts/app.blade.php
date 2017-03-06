@@ -29,7 +29,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
-    {{ Html::favicon('bqsafety/img/user.png') }}
+    {{ Html::favicon('bqsafety/img/logo/bqsafety.png') }}
 
     <!-- Styles -->
     {{ Html::style('bqsafety/libs/bootstrap/css/bootstrap.css') }}

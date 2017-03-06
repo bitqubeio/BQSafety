@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
     <title>BQSafety</title>
     <!-- Favicon -->
-    {{ Html::favicon('bqsafety/img/user.png') }}
+    {{ Html::favicon('bqsafety/img/logo/bqsafety.png') }}
     {{ Html::style('bqsafety/libs/bootstrap/css/bootstrap.css') }}
     {{ Html::style('https://fonts.googleapis.com/css?family=Work+Sans:400,600') }}
     <style>
@@ -70,7 +70,7 @@
         }
 
         .logo {
-            width: 128px;
+            width: 350px;
             margin: 0 auto;
         }
 
@@ -104,10 +104,10 @@
         }
 
         #polina {
-            max-width: 320px;
+            max-width: 350px;
             margin: 2rem auto;
             color: white;
-            padding: 2rem;
+            padding: 0;
             text-align: center;
         }
 
@@ -123,8 +123,7 @@
 </video>
 <div class="cover"></div>
 <div id="polina">
-    <img class="logo" src="{{ url('bqsafety/img/user.png') }}" alt="">
-    <h1>BQSafety</h1>
+    <img class="logo" src="{{ url('bqsafety/img/logo/bqsafety_letter_white.png') }}" alt="">
 
     @if (Route::has('login'))
         @if (Auth::check())

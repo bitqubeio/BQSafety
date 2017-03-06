@@ -112,11 +112,11 @@
                 </tr>
                 <tr>
                     <td><b>Area:</b> {{ $reportsheet->user->user_area }}</td>
-                    <td><b>Fecha:</b> {{ $reportsheet->created_at->toFormattedDateString() }}</td>
+                    <td><b>Fecha:</b> {{ date('d/m/Y', strtotime($reportsheet->reportsheet_datetime)) }}</td>
                 </tr>
                 <tr>
                     <td><b>Lugar:</b> {{ $reportsheet->location->location_name }} </td>
-                    <td><b>Hora:</b> {{ $reportsheet->created_at->format('h:i A') }}</td>
+                    <td><b>Hora:</b> {{ date('H:i', strtotime($reportsheet->reportsheet_datetime)) }}</td>
                 </tr>
             </table>
 
@@ -147,8 +147,8 @@
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>&nbsp;</td>
-                    <td align="left">--------------------------</td>
-                    <td align="right">------------------------------------------</td>
+                    <td align="left">-----------------------------</td>
+                    <td align="right">------------------------------------------------</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>

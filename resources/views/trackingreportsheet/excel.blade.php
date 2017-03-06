@@ -32,10 +32,10 @@
     @foreach($trackingReportSheets as $trackingReportSheet)
         <tr>
             <td height="50">{{ $trackingReportSheet->reportsheet_id }}</td>
-            <td>{{ $trackingReportSheet->created_at->format('F') }}</td>
+            <td>{{ Date::parse($trackingReportSheet->reportsheet_datetime)->format('F') }}</td>
             <td>{{ $trackingReportSheet->location_name }}</td>
-            <td>{{ $trackingReportSheet->created_at->format('d/m/Y') }}</td>
-            <td>{{ $trackingReportSheet->created_at->format('h:i A') }}</td>
+            <td>{{ date('d/m/y', strtotime($trackingReportSheet->reportsheet_datetime)) }}</td>
+            <td>{{ date('H:i', strtotime($trackingReportSheet->reportsheet_datetime)) }}</td>
             <td>
                 <?php
                 $classifications = $trackingReportSheet->reportsheet_classification;

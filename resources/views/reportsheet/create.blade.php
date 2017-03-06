@@ -31,6 +31,18 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('reportsheet_datetime') ? ' has-danger' : '' }}  row">
+                                    <label for="reportsheet_datetime" class="col-lg-2 col-form-label text-lg-right">Fecha y hora:
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-lg-10">
+                                        {{ Form::text('reportsheet_datetime', null, ['id'=>'reportsheet_datetime', 'placeholder' => 'Fecha y hora', 'class'=>'form-control','autofocus']) }}
+                                        @if ($errors->has('reportsheet_datetime'))
+                                            <span class="form-control-feedback">{{ $errors->first('reportsheet_datetime') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group{{ $errors->has('reportsheet_classification') ? ' has-danger' : '' }}  row">
                                     <label for="reportsheet_classification" class="col-lg-2 col-form-label text-lg-right">Clasificación:
                                         <span class="text-danger">*</span>
@@ -85,7 +97,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-10">
-                                        {{ Form::textarea('reportsheet_description', null, ['class'=>'form-control', 'rows'=>4, 'autofocus'=>'on']) }}
+                                        {{ Form::textarea('reportsheet_description', null, ['placeholder'=>'Descripción del reporte' ,'class'=>'form-control', 'rows'=>4, 'autofocus'=>'on']) }}
                                         @if ($errors->has('reportsheet_description'))
                                             <span class="form-control-feedback">{{ $errors->first('reportsheet_description') }}</span>
                                         @endif
@@ -95,7 +107,7 @@
                                 <div class="form-group{{ $errors->has('reportsheet_correctiveaction') ? ' has-danger' : '' }}  row">
                                     <label for="reportsheet_correctiveaction" class="col-lg-2 col-form-label text-lg-right">Acción Correctiva:</label>
                                     <div class="col-lg-10">
-                                        {{ Form::textarea('reportsheet_correctiveaction', null, ['class'=>'form-control', 'rows'=>4, 'autofocus'=>'on']) }}
+                                        {{ Form::textarea('reportsheet_correctiveaction', null, ['placeholder'=>'Acción Correctiva', 'class'=>'form-control', 'rows'=>4, 'autofocus'=>'on']) }}
                                         @if ($errors->has('reportsheet_correctiveaction'))
                                             <span class="form-control-feedback">{{ $errors->first('reportsheet_correctiveaction') }}</span>
                                         @endif
@@ -131,4 +143,15 @@
         </div>
     </section>
 
+@endsection
+
+@section('javascript')
+    <script>
+        $.datetimepicker.setLocale('es');
+
+        $('#reportsheet_datetime').datetimepicker({
+            format: 'd/m/Y H:i',
+            step: 1
+        });
+    </script>
 @endsection

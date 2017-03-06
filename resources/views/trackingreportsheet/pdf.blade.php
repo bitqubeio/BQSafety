@@ -82,13 +82,13 @@
                 <td class="seccion">ÁREA</td>
                 <td>{{ $racs->user->user_area }}</td>
                 <td class="seccion">FECHA</td>
-                <td>{{ $racs->created_at->toFormattedDateString() }}</td>
+                <td>{{ date('d/m/Y', strtotime($racs->reportsheet_datetime)) }}</td>
             </tr>
             <tr>
                 <td class="seccion">LUGAR</td>
                 <td>{{ $racs->location->location_name }}</td>
                 <td class="seccion">HORA</td>
-                <td>{{ $racs->created_at->format('h:i A') }}</td>
+                <td>{{ date('H:i', strtotime($racs->reportsheet_datetime)) }}</td>
             </tr>
             <tr>
                 <td class="seccion">DESCRIPCIÓN DEL REPORTE</td>
@@ -130,11 +130,11 @@
             </tr>
             <tr>
                 <td class="seccion">FECHA INICIO</td>
-                <td colspan="3">{{ Date::createFromFormat('Y-m-d', $tracking->tracking_report_sheet_start_date)->toFormattedDateString() }}</td>
+                <td colspan="3">{{ date('d/m/Y', strtotime($tracking->tracking_report_sheet_start_date)) }}</td>
             </tr>
             <tr>
                 <td class="seccion">FECHA LIMITE</td>
-                <td colspan="3">{{ Date::createFromFormat('Y-m-d', $tracking->tracking_report_sheet_end_date)->toFormattedDateString() }}</td>
+                <td colspan="3">{{ date('d/m/Y', strtotime($tracking->tracking_report_sheet_end_date)) }}</td>
             </tr>
             <tr>
                 <td class="seccion">DESCRIPCIÓN</td>
