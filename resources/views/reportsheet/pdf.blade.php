@@ -6,7 +6,7 @@
     <meta name="author" content="BQSafety - http://bitqube.io">
     <meta name="description" content="Cal & Cemento Sur S.A.">
     <meta name="keywords" content="Somos una empresa dedicada a crear sistemas web para la necesidad de otras empresas, así ayudarlos a optimizar su papeleo y gestión de sus productos o servicios.">
-    <title>HOJA DE REPORTE - N° {{ $reportsheet->id }}</title>
+    <title>HOJA DE REPORTE (Electrónico) - N° {{ $reportsheet->id }}</title>
     <style>
         html,
         body {
@@ -24,7 +24,7 @@
             <table border="0" width="100%">
                 <tr>
                     <td align="left" width="25%"><img src="bqsafety/img/calcesur.png" width="35"></td>
-                    <td align="center" width="50%"><b>HOJA DE REPORTE</b></td>
+                    <td align="center" width="50%"><b>HOJA DE REPORTE <i>(Electrónico)</i></b></td>
                     <td align="right" width="25%">&nbsp;</td>
                 </tr>
             </table>
@@ -38,7 +38,7 @@
             ?>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td>Accidente Seguridad</td>
+                    <td>Accidente de Trabajo</td>
                     <td>
                         @if (in_array(1, $classification))
                             <input type="checkbox" checked>
@@ -49,7 +49,7 @@
                     <td width="30">&nbsp;</td>
                     <td>Accidente Ambiental</td>
                     <td>
-                        @if (in_array(4, $classification))
+                        @if (in_array(5, $classification))
                             <input type="checkbox" checked>
                         @else
                             <input type="checkbox">
@@ -57,7 +57,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Incidente Seguridad</td>
+                    <td>Incidente</td>
                     <td>
                         @if (in_array(2, $classification))
                             <input type="checkbox" checked>
@@ -68,7 +68,7 @@
                     <td></td>
                     <td>Incidente Ambiental</td>
                     <td>
-                        @if (in_array(5, $classification))
+                        @if (in_array(6, $classification))
                             <input type="checkbox" checked>
                         @else
                             <input type="checkbox">
@@ -76,7 +76,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Acto Subestandar</td>
+                    <td>Incidente Peligroso</td>
                     <td>
                         @if (in_array(3, $classification))
                             <input type="checkbox" checked>
@@ -87,12 +87,25 @@
                     <td></td>
                     <td>Condición Subestandar</td>
                     <td>
-                        @if (in_array(6, $classification))
+                        @if (in_array(7, $classification))
                             <input type="checkbox" checked>
                         @else
                             <input type="checkbox">
                         @endif
                     </td>
+                </tr>
+                <tr>
+                    <td>Acto Subestandar</td>
+                    <td>
+                        @if (in_array(4, $classification))
+                            <input type="checkbox" checked>
+                        @else
+                            <input type="checkbox">
+                        @endif
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </td>
@@ -144,39 +157,13 @@
     <tr>
         <td bgcolor="#FFFFFF" valign="top">
             <div align="justify" style="padding:0px 0 50px 0;height: 80px;">{{ $reportsheet->reportsheet_correctiveaction }}</div>
-            <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td>&nbsp;</td>
-                    <td align="left">-----------------------------</td>
-                    <td align="right">------------------------------------------------</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td align="left" style="font-size:70%"><i>Firma del Reportante</i></td>
-                    <td align="right" style="font-size:70%"><i>Seguridad Integral/Medio Ambiente</i></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td align="left" valign="bottom" style="font-size:50%">Original: Reportante</td>
-                    <td align="right" valign="bottom" style="font-size:50%">Copia 1: Jefe de Seguridad Integral/Medio Ambiente (según corresponda)</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
         </td>
     </tr>
     </tbody>
 </table>
 <table width="100%" cellpadding="1" cellspacing="1">
     <tr>
-        <td align="left" width="30%"><b>SI-F-116</b></td>
+        <td align="left" width="30%"><b>SI-F-131</b></td>
         <td align="center" width="40%" style="font-size:50%">Hoja de Reporte N° {{ $reportsheet->id }}</td>
         <td align="right" width="30%"><b>REVISIÓN:00</b></td>
     </tr>

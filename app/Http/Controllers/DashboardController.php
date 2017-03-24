@@ -86,7 +86,7 @@ class DashboardController extends Controller
 
         $total = Reportsheet::select('reportsheet_classification')->get();
 
-        $var1 = $var2 = $var3 = $var4 = $var5 = $var6 = null;
+        $var1 = $var2 = $var3 = $var4 = $var5 = $var6 = $var7 = null;
 
         for ($i = 0; $i <= count($total) - 1; $i++) {
             $value = $total[$i]->reportsheet_classification;
@@ -97,17 +97,19 @@ class DashboardController extends Controller
             in_array(4, $values) ? $var4++ : null;
             in_array(5, $values) ? $var5++ : null;
             in_array(6, $values) ? $var6++ : null;
+            in_array(7, $values) ? $var7++ : null;
         }
 
         $pieChartjs = app()->chartjs
             ->name('pieChartjs')
             ->type('pie')
-            ->labels(['Accidente Seguridad', 'Incidente Seguridad', 'Acto Subestandar', 'Accidente Ambiental', 'Incidente Ambiental', 'Condición Subestandar'])
+            ->labels(['Accidente de Trabajo', 'Incidente', 'Incidente Peligroso', 'Acto Subestandar', 'Accidente Ambiental', 'Incidente Ambiental', 'Condición Subestandar'])
             ->datasets([
                 [
                     'backgroundColor' => [
                         'rgba(226,86,104,0.8)',
                         'rgba(207,86,226,0.8)',
+                        'rgba(115,115,255,0.8)',
                         'rgba(138,86,226,0.8)',
                         'rgba(104,226,86,0.8)',
                         'rgba(226,207,86,0.8)',
@@ -116,12 +118,13 @@ class DashboardController extends Controller
                     'hoverBackgroundColor' => [
                         'rgba(226,86,104,1)',
                         'rgba(207,86,226,1)',
+                        'rgba(115,115,255,1)',
                         'rgba(138,86,226,1)',
                         'rgba(104,226,86,1)',
                         'rgba(226,207,86,1)',
                         'rgba(226,137,86,1)'
                     ],
-                    'data' => [$var1, $var2, $var3, $var4, $var5, $var6]
+                    'data' => [$var1, $var2, $var3, $var4, $var5, $var6, $var7]
                 ]
             ])
             ->options([]);

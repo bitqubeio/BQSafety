@@ -42,21 +42,24 @@
                 $classification = explode(',', $classifications);
                 ?>
                 @if (in_array(1, $classification))
-                    Accidente Seguridad
+                    Accidente de Trabajo
                 @endif
                 @if (in_array(2, $classification))
-                    Incidente Seguridad
+                    Incidente
                 @endif
                 @if (in_array(3, $classification))
-                    Acto Subestandar
+                    Incidente Peligroso
                 @endif
                 @if (in_array(4, $classification))
-                    Accidente Ambiental
+                    Acto Subestandar
                 @endif
                 @if (in_array(5, $classification))
-                    Incidente Ambiental
+                    Accidente Ambiental
                 @endif
                 @if (in_array(6, $classification))
+                    Incidente Ambiental
+                @endif
+                @if (in_array(7, $classification))
                     Condición Subestandar
                 @endif
             </td>

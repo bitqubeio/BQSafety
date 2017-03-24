@@ -18,7 +18,7 @@ class CreateReportsheetsTable extends Migration
             $table->integer('location_id')->unsigned();
             $table->foreign('location_id')->references('id')->on('locations');
             $table->dateTime('reportsheet_datetime');
-            $table->string('reportsheet_classification', 11);
+            $table->string('reportsheet_classification', 13);
             $table->string('reportsheet_description', 500);
             $table->string('reportsheet_correctiveaction', 500)->nullable();
             $table->string('reportsheet_image')->default('default.png');

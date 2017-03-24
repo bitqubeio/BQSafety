@@ -53,34 +53,39 @@
                                             <div class="col-lg-3">
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        {!! Form::checkbox('reportsheet_classification[]', 1, false, ['class'=>'form-check-input']) !!} &nbsp;Accidente Seguridad
+                                                        {!! Form::checkbox('reportsheet_classification[]', 1, false, ['class'=>'form-check-input']) !!} &nbsp;Accidente de Trabajo
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        {!! Form::checkbox('reportsheet_classification[]', 2, false, ['class'=>'form-check-input']) !!} &nbsp;Incidente Seguridad
+                                                        {!! Form::checkbox('reportsheet_classification[]', 2, false, ['class'=>'form-check-input']) !!} &nbsp;Incidente
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        {!! Form::checkbox('reportsheet_classification[]', 3, false, ['class'=>'form-check-input']) !!} &nbsp;Acto Subestandar
+                                                        {!! Form::checkbox('reportsheet_classification[]', 3, false, ['class'=>'form-check-input']) !!} &nbsp;Incidente Peligroso
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        {!! Form::checkbox('reportsheet_classification[]', 4, false, ['class'=>'form-check-input']) !!} &nbsp;Acto Subestandar
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        {!! Form::checkbox('reportsheet_classification[]', 4, false, ['class'=>'form-check-input']) !!} &nbsp;Accidente Ambiental
+                                                        {!! Form::checkbox('reportsheet_classification[]', 5, false, ['class'=>'form-check-input']) !!} &nbsp;Accidente Ambiental
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        {!! Form::checkbox('reportsheet_classification[]', 5, false, ['class'=>'form-check-input']) !!} &nbsp;Incidente Ambiental
+                                                        {!! Form::checkbox('reportsheet_classification[]', 6, false, ['class'=>'form-check-input']) !!} &nbsp;Incidente Ambiental
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        {!! Form::checkbox('reportsheet_classification[]', 6, false, ['class'=>'form-check-input']) !!} &nbsp;Condición Subestandar
+                                                        {!! Form::checkbox('reportsheet_classification[]', 7, false, ['class'=>'form-check-input']) !!} &nbsp;Condición Subestandar
                                                     </label>
                                                 </div>
                                             </div>

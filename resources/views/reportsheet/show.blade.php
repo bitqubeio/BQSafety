@@ -74,21 +74,24 @@
                                         $classification = explode(',', $classifications);
                                         ?>
                                         @if (in_array(1, $classification))
-                                            <span style="background-color:#3498DB" class="badge badge-pill">Accidente Seguridad</span><br>
+                                            <span style="background-color:#3498DB" class="badge badge-pill">Accidente de Trabajo</span><br>
                                         @endif
                                         @if (in_array(2, $classification))
-                                            <span style="background-color:#2ECC71" class="badge badge-pill">Incidente Seguridad</span><br>
+                                            <span style="background-color:#2ECC71" class="badge badge-pill">Incidente</span><br>
                                         @endif
                                         @if (in_array(3, $classification))
-                                            <span style="background-color:#F24E4A" class="badge badge-pill">Acto Subestandar</span><br>
+                                            <span style="background-color:#7373FF" class="badge badge-pill">Incidente Peligroso</span><br>
                                         @endif
                                         @if (in_array(4, $classification))
-                                            <span style="background-color:#293F55" class="badge badge-pill">Accidente Ambiental</span><br>
+                                            <span style="background-color:#F24E4A" class="badge badge-pill">Acto Subestandar</span><br>
                                         @endif
                                         @if (in_array(5, $classification))
-                                            <span style="background-color:#9B59B6" class="badge badge-pill">Incidente Ambiental</span><br>
+                                            <span style="background-color:#293F55" class="badge badge-pill">Accidente Ambiental</span><br>
                                         @endif
                                         @if (in_array(6, $classification))
+                                            <span style="background-color:#9B59B6" class="badge badge-pill">Incidente Ambiental</span><br>
+                                        @endif
+                                        @if (in_array(7, $classification))
                                             <span style="background-color:#F39C12" class="badge badge-pill">Condición Subestandar</span>
                                         @endif
                                     </td>

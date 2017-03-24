@@ -20,7 +20,7 @@
         <div class="row">
             <div id="logo">
                 <img src="bqsafety/img/calcesur.png">
-                <div class="info"><b>Cal y Cemento Sur S.A.</b>
+                <div class="info"><b>Cal & Cemento Sur S.A.</b>
                     <br> Seguridad Integral
                     <br> Km 11 Panamericana Sur Juliaca – Puno; Caracoto, Perú
                     <br> Tel 051-328544 anexo 4636 | RPM *200056</div>
@@ -45,22 +45,25 @@
                 $classification = explode(',', $classifications);
                 ?>
                 <td>
-                    @if (in_array(1, $classification))
-                        Accidente Seguridad<br>
+                    @if(in_array(1, $classification))
+                        Accidente de Trabajo<br>
                     @endif
                     @if(in_array(2, $classification))
-                        Incidente Seguridad<br>
-                        @endif
+                        Incidente<br>
+                    @endif
                     @if(in_array(3, $classification))
-                        Acto Subestandar<br>
-                        @endif
+                        Incidente Peligroso<br>
+                    @endif
                     @if(in_array(4, $classification))
-                        Accidente Ambiental<br>
-                        @endif
+                        Acto Subestandar<br>
+                    @endif
                     @if(in_array(5, $classification))
-                        Incidente Ambiental<br>
-                        @endif
+                        Accidente Ambiental<br>
+                    @endif
                     @if(in_array(6, $classification))
+                        Incidente Ambiental<br>
+                    @endif
+                    @if(in_array(7, $classification))
                         Condición Subestandar<br>
                     @endif
                 </td>

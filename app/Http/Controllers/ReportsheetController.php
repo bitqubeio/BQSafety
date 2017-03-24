@@ -58,21 +58,24 @@ class ReportsheetController extends Controller
                 $classification = explode(',', $classifications);
                 $var = null;
                 if (in_array(1, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E25668"></i> Accidente Seguridad</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E25668"></i> Accidente de Trabajo</span><br>';
                 }
                 if (in_array(2, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #CF56E2"></i> Incidente Seguridad</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #CF56E2"></i> Incidente</span><br>';
                 }
                 if (in_array(3, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #8A56E2"></i> Acto Subestandar</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #7373FF"></i> Incidente Peligroso</span><br>';
                 }
                 if (in_array(4, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #68E256"></i> Accidente Ambiental</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #8A56E2"></i> Acto Subestandar</span><br>';
                 }
                 if (in_array(5, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E2CF56"></i> Incidente Ambiental</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #68E256"></i> Accidente Ambiental</span><br>';
                 }
                 if (in_array(6, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E2CF56"></i> Incidente Ambiental</span><br>';
+                }
+                if (in_array(7, $classification)) {
                     $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E28956"></i> Condición Subestandar</span><br>';
                 }
                 return $var;
@@ -151,21 +154,24 @@ class ReportsheetController extends Controller
                 $classification = explode(',', $classifications);
                 $var = null;
                 if (in_array(1, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E25668"></i> Accidente Seguridad</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E25668"></i> Accidente de Trabajo</span><br>';
                 }
                 if (in_array(2, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #CF56E2"></i> Incidente Seguridad</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #CF56E2"></i> Incidente</span><br>';
                 }
                 if (in_array(3, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #8A56E2"></i> Acto Subestandar</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #7373FF"></i> Incidente Peligroso</span><br>';
                 }
                 if (in_array(4, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #68E256"></i> Accidente Ambiental</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #8A56E2"></i> Acto Subestandar</span><br>';
                 }
                 if (in_array(5, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E2CF56"></i> Incidente Ambiental</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #68E256"></i> Accidente Ambiental</span><br>';
                 }
                 if (in_array(6, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E2CF56"></i> Incidente Ambiental</span><br>';
+                }
+                if (in_array(7, $classification)) {
                     $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E28956"></i> Condición Subestandar</span><br>';
                 }
                 return $var;
@@ -234,21 +240,24 @@ class ReportsheetController extends Controller
                 $classification = explode(',', $classifications);
                 $var = null;
                 if (in_array(1, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E25668"></i> Accidente Seguridad</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E25668"></i> Accidente de Trabajo</span><br>';
                 }
                 if (in_array(2, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #CF56E2"></i> Incidente Seguridad</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #CF56E2"></i> Incidente</span><br>';
                 }
                 if (in_array(3, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #8A56E2"></i> Acto Subestandar</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #7373FF"></i> Incidente Peligroso</span><br>';
                 }
                 if (in_array(4, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #68E256"></i> Accidente Ambiental</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #8A56E2"></i> Acto Subestandar</span><br>';
                 }
                 if (in_array(5, $classification)) {
-                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E2CF56"></i> Incidente Ambiental</span><br>';
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #68E256"></i> Accidente Ambiental</span><br>';
                 }
                 if (in_array(6, $classification)) {
+                    $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E2CF56"></i> Incidente Ambiental</span><br>';
+                }
+                if (in_array(7, $classification)) {
                     $var .= '<span class="small text-muted"><i class="fa fa-circle" style="color: #E28956"></i> Condición Subestandar</span><br>';
                 }
                 return $var;
